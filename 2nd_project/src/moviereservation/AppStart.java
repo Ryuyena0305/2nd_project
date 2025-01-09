@@ -2,8 +2,8 @@ package moviereservation;
 
 import java.util.Scanner;
 
-import moviereservation.view.AdminView;
-import moviereservation.view.MemberView;
+import moviereservation.view.admin.AdminView;
+import moviereservation.view.member.MemberView;
 
 public class AppStart {
 

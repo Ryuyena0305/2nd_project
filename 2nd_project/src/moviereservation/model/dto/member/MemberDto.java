@@ -1,4 +1,4 @@
-package moviereservation.model.dto;
+package moviereservation.model.dto.member;
 
 public class MemberDto {
 	int memberId;
