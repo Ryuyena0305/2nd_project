@@ -1,4 +1,4 @@
-package moviereservation.view;
+package moviereservation.view.admin;
 
 public class AdminView {
 	private static AdminView instance = new AdminView();

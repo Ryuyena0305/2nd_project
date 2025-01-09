@@ -1,4 +1,4 @@
-package moviereservation.view;
+package moviereservation.view.member;
 
 public class MemberView {
 	private static MemberView instance = new MemberView();
