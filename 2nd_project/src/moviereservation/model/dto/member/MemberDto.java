@@ -1,15 +1,23 @@
 package moviereservation.model.dto.member;
 
 public class MemberDto {
-	int memberId;
-	String mid;
-	String mpw;
-	String mname;
-	String mbirth;
+	private int memberId;
+	private String mid;
+	private String mpw;
+	private String mname;
+	private String mbirth;
 	public MemberDto() {}
 	public MemberDto(int memberId, String mid, String mpw, String mname, String mbirth) {
 		super();
 		this.memberId = memberId;
+		this.mid = mid;
+		this.mpw = mpw;
+		this.mname = mname;
+		this.mbirth = mbirth;
+	}
+	
+	public MemberDto(String mid, String mpw, String mname, String mbirth) {
+		super();
 		this.mid = mid;
 		this.mpw = mpw;
 		this.mname = mname;
