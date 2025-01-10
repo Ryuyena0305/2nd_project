@@ -66,7 +66,8 @@ public class AdminMovieTimeView {
 				System.out.printf(adMovieTimeDto.getStartTime()+ "\t");
 				System.out.printf(adMovieTimeDto.getFinishtime()+ "\t");
 				System.out.printf(adMovieTimeDto.getMovieDate()+ "\t");
-				System.out.printf(adMovieTimeDto.getTheaterId()+ "\n");
+				System.out.printf(adMovieTimeDto.getTheaterId()+ "\t");
+				System.out.println(adMovieTimeDto.getRunTime()+ "\n");
 			}
 		}
 		public void movieTimeDelete() {
