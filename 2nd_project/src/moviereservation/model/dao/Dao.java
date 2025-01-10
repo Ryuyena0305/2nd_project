@@ -11,7 +11,7 @@ import java.sql.DriverManager;
 
 public class Dao {
 	protected Connection conn;	//DB와 연동 결과를 조작하는 인터페이스
-	private String dburl = "jdbc:mysql://localhost:3306/boardservice10"; //연동할 DB서버의 URL
+	private String dburl = "jdbc:mysql://localhost:3306/moviereservation"; //연동할 DB서버의 URL
 	private String dbuser = "root";
 	private String dbpwd="1234";
 	public Dao() {
