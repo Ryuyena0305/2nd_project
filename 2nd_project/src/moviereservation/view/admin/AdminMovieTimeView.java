@@ -32,7 +32,9 @@ public class AdminMovieTimeView {
 			System.out.println("시작시간입력");
 			String startTime = scan.next(); 
 			AdminMovieTimeDto adminMovieTimeDto = new AdminMovieTimeDto();
-			adminMovieTimeDto.setStartTime(startTime);
+			
+			//boolean result = AdminMovieTimeController.getInstance().movieTimeRes();
+			
 		}
 		
 }

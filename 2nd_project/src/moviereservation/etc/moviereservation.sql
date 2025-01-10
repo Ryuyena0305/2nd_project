@@ -125,6 +125,7 @@ insert into resv(resvDate,memberId,startTime) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,startTime) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,startTime) values('2025-01-01',4,6);
 
+select * from timeTable;
 
 
 
