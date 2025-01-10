@@ -20,7 +20,7 @@ create table member(
     mid varchar(20) not null unique ,
     mpw varchar(20) not null ,
     mname varchar(20) not null ,
-    mbirth date,
+    mbirth varchar(10),
     constraint primary key( memberId )
 ); 
 # [1] 회원테이블 샘플 레코드 삽입
@@ -93,10 +93,10 @@ insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025
 
 
 create table timeTable(
-        timepk int unsigned auto_increment,
-        startTime time,
-    finishTime time,
-    movieDate date,
+    timepk int unsigned auto_increment,
+	startTime varchar(10),
+    finishTime varchar(10),
+    movieDate varchar(10),
     theaterId tinyint unsigned,
     movieId int unsigned,
     constraint primary key (timepk),
@@ -113,7 +113,7 @@ insert into timeTable(startTime,finishTime,movieDate,theaterId,movieId) values('
 
 create table resv(
 resvId int unsigned auto_increment,
-resvDate date,
+resvDate varchar(10),
 memberId int unsigned,
 startTime int unsigned not null,
 constraint primary key (resvId),
