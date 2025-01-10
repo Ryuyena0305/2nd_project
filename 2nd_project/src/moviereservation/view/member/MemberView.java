@@ -41,10 +41,7 @@ public class MemberView {
 		boolean result = MemberController.getInstance().login(memberDto);
 		if(result) {
 			System.out.println("로그인 성공");
-			System.out.println("1.회원수정 2.회원탈퇴");
-			int choose = scan.nextInt();
-			if(choose == 1) {update();}
-			else if(choose ==2) {delete();}
+			MemberResvView.getInstance().run();
 		}
 		else {System.out.println("로그인 실패");}
 	}
