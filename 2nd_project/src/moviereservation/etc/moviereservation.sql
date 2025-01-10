@@ -20,7 +20,7 @@ create table member(
     mid varchar(20) not null unique ,
     mpw varchar(20) not null ,
     mname varchar(20) not null ,
-    mbirth date,
+    mbirth varchar(10),
     constraint primary key( memberId )
 ); 
 # [1] 회원테이블 샘플 레코드 삽입
@@ -94,9 +94,9 @@ insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025
 
 create table timeTable(
 	timepk int unsigned auto_increment,
-	startTime time,
-    finishTime time,
-    movieDate date,
+	startTime varchar(10),
+    finishTime varchar(10),
+    movieDate varchar(10),
     theaterId tinyint unsigned,
     movieId int unsigned,
     constraint primary key (timepk),
@@ -113,7 +113,7 @@ insert into timeTable(startTime,finishTime,movieDate,theaterId,movieId) values('
 
 create table resv(
 resvId int unsigned auto_increment,
-resvDate date,
+resvDate varchar(10),
 memberId int unsigned,
 startTime int unsigned not null,
 constraint primary key (resvId),
@@ -125,7 +125,8 @@ insert into resv(resvDate,memberId,startTime) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,startTime) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,startTime) values('2025-01-01',4,6);
 
-select * from timeTable;
+select * from timeTable ;
+select timepk, m.movieName as movieName, startTime, finishTime, movieDate, theaterId, m.runTime as runTime from  timeTable tt inner join movie m on tt.movieId = m.movieId ;
 
 
 
