@@ -13,7 +13,7 @@ public class AppStart {
 			System.out.println("1.관리자 2.사용자");
 			int choose = scan.nextInt();
 			if (choose == 1) {
-				AdminView.getInstance().run();
+				AdminView.getInstance().adminMainMenu();
 			} else if (choose == 2) {
 				MemberView.getInstance().run();
 			}

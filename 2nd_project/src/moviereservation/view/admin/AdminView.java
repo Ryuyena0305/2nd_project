@@ -2,9 +2,6 @@ package moviereservation.view.admin;
 
 import java.util.Scanner;
 
-import moviereservation.controller.member.MemberController;
-import moviereservation.model.dto.member.MemberDto;
-
 public class AdminView {
 	private static AdminView instance = new AdminView();
 	private AdminView() {}
