@@ -2,12 +2,20 @@ package moviereservation.view.admin;
 
 import java.util.Scanner;
 
+import moviereservation.controller.member.MemberController;
+import moviereservation.model.dto.member.MemberDto;
+
 public class AdminView {
 	private static AdminView instance = new AdminView();
 	private AdminView() {}
 	public static AdminView getInstance() {return instance;}
 	
+	private Scanner scan = new Scanner(System.in);
 	public void run() {
+		
+	}
+	
+	public void adminMainMenu() {
 		Scanner scan = new Scanner(System.in);
 		while(true) {
 			System.out.println("1. 영화정보 관리\r\n"
