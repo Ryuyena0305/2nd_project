@@ -11,6 +11,12 @@ public class AdminTheaterDto {
 		Tseat = tseat;
 		Tscreen = tscreen;
 	}
+	public AdminTheaterDto(int tseat, String tscreen) {
+	
+		Tseat = tseat;
+		Tscreen = tscreen;
+	}
+
 
 	@Override
 	public String toString() {

@@ -1,8 +1,9 @@
-package moviereservation.model.dao;
+package moviereservation.model.dao.admin;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import moviereservation.model.dao.Dao;
 import moviereservation.model.dto.admin.AdminDto;
 
 
@@ -23,7 +24,7 @@ public class AdminInfoDao extends Dao{
 			   String pw = rs.getString("apw");
 			   
 			   return pw.equals(adminDto.getApw());
-		   }
+		   	}
 		   }catch (Exception e) {System.out.println(e);}
 		   return false;
 	   }
