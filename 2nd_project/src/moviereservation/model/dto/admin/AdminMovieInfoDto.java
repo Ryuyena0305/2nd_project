@@ -17,7 +17,7 @@ public class AdminMovieInfoDto {
 		this.movieGrade = movieGrade;
 		this.genreId = genreId;
 		this.genreName = genreName;
-	}
+	} 
 	
 
 	@Override

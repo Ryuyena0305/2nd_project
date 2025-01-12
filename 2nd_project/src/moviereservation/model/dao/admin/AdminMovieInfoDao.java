@@ -28,7 +28,7 @@ public class AdminMovieInfoDao extends Dao {
 			System.out.println(e);
 		}
     	return false;
-    	
+    	 
     }
 }
 

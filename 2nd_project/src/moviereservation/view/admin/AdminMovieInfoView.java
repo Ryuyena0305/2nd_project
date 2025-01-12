@@ -27,7 +27,7 @@ public class AdminMovieInfoView {
 			}else if(movieInfo == 5) {
 				break;
 			}
-		}
+		} 
 	}
 		public void movieInfoRes() {
 			System.out.println("영화이름 : ");
