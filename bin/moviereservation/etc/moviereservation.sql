@@ -3,7 +3,7 @@ create database moviereservation;
 use moviereservation;     
   
 create table admin(
-	adminId int unsigned auto_increment , 
+        adminId int unsigned auto_increment , 
     aid varchar(20) not null unique ,
     apw varchar(20) not null ,
     aname varchar(20) not null ,
@@ -16,11 +16,11 @@ insert into admin ( aid, apw ,aname) values( 'admin3' , '3456' , '장민우' );
 insert into admin ( aid, apw ,aname) values( 'admin4' , '4567' , '류예나' );
 
 create table member(
-	memberId int unsigned auto_increment , 
+        memberId int unsigned auto_increment , 
     mid varchar(20) not null unique ,
     mpw varchar(20) not null ,
     mname varchar(20) not null ,
-    mbirth date,
+    mbirth varchar(10),
     constraint primary key( memberId )
 ); 
 # [1] 회원테이블 샘플 레코드 삽입
@@ -31,25 +31,25 @@ insert into member ( mid, mpw ,mname, mbirth) values( 'guest4' , '4567' , '류�
 
 
 
-    create table categorie(
-	genreId int unsigned auto_increment,
+    create table genre(
+        genreId int unsigned auto_increment,
     genreName char(10) not null,
      constraint primary key( genreId )
     );
     
-insert into categorie (genreName ) values( '액션' );
-insert into categorie (genreName ) values( '판타지' );
-insert into categorie (genreName ) values( '로맨스' );
-insert into categorie (genreName ) values( '드라마' );
-insert into categorie (genreName ) values( '미스터리' );
+insert into genre (genreName ) values( '액션' );
+insert into genre (genreName ) values( '판타지' );
+insert into genre (genreName ) values( '로맨스' );
+insert into genre (genreName ) values( '드라마' );
+insert into genre (genreName ) values( '미스터리' );
 
 create table movie(
-	movieId int unsigned auto_increment , 
+        movieId int unsigned auto_increment , 
     movieName varchar(30) not null,
     runTime tinyint unsigned not null,
     movieGrade varchar(10) not null,
     genreId int unsigned not null,
-    constraint foreign key(genreId) references categorie(genreId),
+    constraint foreign key(genreId) references genre(genreId),
     constraint primary key( movieId )
 ); 
 
@@ -93,10 +93,10 @@ insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025
 
 
 create table timeTable(
-	timepk int unsigned auto_increment,
-	startTime time,
-    finishTime time,
-    movieDate date,
+    timepk int unsigned auto_increment,
+	startTime varchar(10),
+    finishTime varchar(10),
+    movieDate varchar(10),
     theaterId tinyint unsigned,
     movieId int unsigned,
     constraint primary key (timepk),
@@ -113,21 +113,14 @@ insert into timeTable(startTime,finishTime,movieDate,theaterId,movieId) values('
 
 create table resv(
 resvId int unsigned auto_increment,
-resvDate date,
+resvDate varchar(10),
 memberId int unsigned,
 startTime int unsigned not null,
 constraint primary key (resvId),
 constraint foreign key(memberId ) references member(memberId),
-constraint foreign key(startTime ) references timeTable(timepk)
+constraint foreign key(timepk ) references timeTable(timepk)
 );
 insert into resv(resvDate,memberId,startTime) values('2025-01-02',3,1);
 insert into resv(resvDate,memberId,startTime) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,startTime) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,startTime) values('2025-01-01',4,6);
-
-
-
-
-
-
-

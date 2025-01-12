@@ -15,7 +15,6 @@ public class AdminMovieTimeDto {
 	public AdminMovieTimeDto() {}
 	public AdminMovieTimeDto( String startTime, String finishtime, String movieDate, int theaterId, int movieId) {
 		super();
-
 		this.startTime = startTime;
 		this.finishtime = finishtime;
 		this.movieDate = movieDate;
@@ -52,6 +51,17 @@ public class AdminMovieTimeDto {
 		this.runTime = runTime;
 	}
 
+	public AdminMovieTimeDto(int timepk, String startTime, String finishtime, String movieDate, int theaterId,
+			int movieId) {
+		super();
+		this.timepk = timepk;
+		this.startTime = startTime;
+		this.finishtime = finishtime;
+		this.movieDate = movieDate;
+		this.theaterId = theaterId;
+		this.movieId = movieId;
+	}
+	
 	@Override
 	public String toString() {
 		return "AdminMovieTimeDto [startTime=" + startTime + ", finishtime=" + finishtime + ", movieDate=" + movieDate
@@ -107,7 +117,7 @@ public class AdminMovieTimeDto {
 	public void setTimepk(int timepk) {
 		this.timepk = timepk;
 	}
-
+	
 	
 	
 	

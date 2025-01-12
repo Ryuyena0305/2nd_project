@@ -24,7 +24,9 @@ public class AdminMovieTimeDao extends Dao {
 			ps.setInt(4, adminMovieTimeDto.getTheaterId());
 			ps.setInt(5, adminMovieTimeDto.getMovieId());
 			int count = ps.executeUpdate();
-			if (count == 1 ) {return true;}
+			if (count == 1 ) {
+				return true;
+				}
 			} catch(SQLException e) {
 				System.out.println(e);
 			}
@@ -34,7 +36,7 @@ public class AdminMovieTimeDao extends Dao {
 			ArrayList<AdminMovieTimeDto> list = new ArrayList<AdminMovieTimeDto>();
 			
 			try {
-				String sql = "select timepk, m.movieName as movieName, startTime, finishTime, movieDate, theaterId, m.runTime as runTime from  timeTable tt inner join movie m on tt.movieId = m.movieId";
+				String sql = "select timepk, m.movieName as movieName, startTime, finishTime, movieDate, theaterId, m.runTime as runTime from  timeTable tt inner join movie m on tt.movieId = m.movieId order by timepk";
 				PreparedStatement ps;
 				ps = conn.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();
@@ -53,6 +55,35 @@ public class AdminMovieTimeDao extends Dao {
 				System.out.println(e);
 			}
 			return list;
+		}
+		public boolean deleteByNum(int timepk) {
+			try {
+	            String sql = "delete from timeTable where timepk = ?";
+	            PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1,timepk );
+	            int result = ps.executeUpdate();
+	            return result > 0; 
+	        } catch (SQLException e) {
+	            System.out.println(e);
+	            return false;
+	        }
+	    }
+		public boolean updateByNum(AdminMovieTimeDto adminMovieTimeDto) {
+		    String sql = "update timeTable set startTime = ?, finishTime = ?, movieDate = ?, theaterId = ?, movieId = ? where timepk = ?";
+		    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+		        ps.setString(1, adminMovieTimeDto.getStartTime());
+		        ps.setString(2, adminMovieTimeDto.getFinishtime());
+		        ps.setString(3, adminMovieTimeDto.getMovieDate());
+		        ps.setInt(4, adminMovieTimeDto.getTheaterId());
+		        ps.setInt(5, adminMovieTimeDto.getMovieId());
+		        ps.setInt(6, adminMovieTimeDto.getTimepk());
+		        
+		        int rowsUpdated = ps.executeUpdate();
+		        return rowsUpdated > 0;
+		    } catch (SQLException e) {
+		        System.out.println(e);
+		        return false;
+		    }
 		}
 }
 

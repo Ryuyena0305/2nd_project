@@ -22,7 +22,7 @@ public class AdminMovieTimeView {
 				movieTimeRes();
 			}else if(movieTime == 2) {
 				System.out.println("상영시간표 수정");
-				movieTimeMod();
+				movieTimeUpdate();
 			}else if(movieTime == 3) {
 				System.out.println("상영시간표 출력");
 				movieTimeShow();
@@ -53,12 +53,31 @@ public class AdminMovieTimeView {
 				System.out.println("등록 실패");
 			}
 		}
-		public void movieTimeMod() {
-			
+		public void movieTimeUpdate() {
+			System.out.println("수정할 번호 :");
+	        int num = scan.nextInt();
+	        System.out.println("수정할 시작시간입력");
+			String startTime = scan.next(); 
+			System.out.println("수정할 종료시간입력");
+			String finishTime = scan.next(); 
+			System.out.println("수정할 영화날짜입력");
+			String movieDate = scan.next();
+			System.out.println("수정할 관 입력");
+			int theaterId = scan.nextInt();
+			System.out.println("수정할 영화번호 입력");
+			int movieId = scan.nextInt();
+			 
+			AdminMovieTimeDto adminMovieTimeDto = new AdminMovieTimeDto(num, startTime, finishTime, movieDate, theaterId, movieId);
+			boolean result = AdminMovieTimeController.getInstance().updateByNum(adminMovieTimeDto);
+	        if (result) {
+	            System.out.println("수정 성공");
+	        } else {
+	            System.out.println("수정 실패");
+	        }
 		}
 		public void movieTimeShow() {
 			ArrayList<AdminMovieTimeDto> show = AdminMovieTimeController.getInstance().movieTimeShow(); 
-			System.out.println("번호\t영화명\t상영시작시간\t상영종료시간\t상영일\t상영관\t런닝타임");
+			System.out.println("번호\t영화명\t상영시작\t상영종료\t상영일\t\t상영관\t런닝타임");
 			for(int i = 0; i <=show.size()-1; i++) {
 				AdminMovieTimeDto adMovieTimeDto = show.get(i);
 				System.out.printf(adMovieTimeDto.getTimepk()+ "\t");
@@ -71,7 +90,14 @@ public class AdminMovieTimeView {
 			}
 		}
 		public void movieTimeDelete() {
-			
+			System.out.println("삭제할 번호 :");
+	        int timepk = scan.nextInt();
+	        boolean result = AdminMovieTimeController.getInstance().deleteByNum(timepk);
+	        if (result) {
+	            System.out.println("삭제 성공");
+	        } else {
+	            System.out.println("삭제 실패");
+	        }
 		}
 		
 }
