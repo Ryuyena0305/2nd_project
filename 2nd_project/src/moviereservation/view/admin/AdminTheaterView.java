@@ -16,7 +16,6 @@ public class AdminTheaterView {
 	}
 	Scanner scan = new Scanner(System.in);
 	public void TheaterView() {
-		System.out.println("영화상영관 관리");
 		while(true) {
 			System.out.println("1. 상영관 정보 등록 ");
 			System.out.println("2. 상영관 정보 출력 ");
@@ -50,7 +49,7 @@ public class AdminTheaterView {
 		System.out.println("전체 좌석 수 : "); int Tseat = scan.nextInt();
 		System.out.println("스크린 : "); String Tscreen =scan.next();
 		AdminTheaterDto adminTheaterDto = new AdminTheaterDto();
-		boolean result = AdminTheaterController.getInstance().addTheater();
+		boolean result = AdminTheaterController.getInstance().addTheater(adminTheaterDto);
 		if(result) {System.out.println("[ 상영관 정보등록 성공 ]");}
 		else {System.out.println("[ 상영관 정보등록 실패 ]");}
 	}
@@ -117,7 +116,7 @@ public class AdminTheaterView {
 			AdminTheaterDto adminTheaterDto = result.get(index);
 			System.out.println("상영관번호\t전체좌석수\t스크린");
 			System.out.print(adminTheaterDto.getTid()+"관\t");
-			System.out.print(adminTheaterDto.getTseat()+"\t");
+			System.out.print(adminTheaterDto.getTseat()+"석\t");
 			System.out.print(adminTheaterDto.getTscreen()+"\t");
 		}
 		

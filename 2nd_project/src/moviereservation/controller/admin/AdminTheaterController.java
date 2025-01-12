@@ -11,8 +11,8 @@ public class AdminTheaterController {
 	public static AdminTheaterController getInstance() {
 		return instance;
 	}
-	public boolean addTheater() {
-		boolean result = AdminTheaterDao.getInstance().addTheater();
+	public boolean addTheater(AdminTheaterDto adminTheaterDto) {
+		boolean result = AdminTheaterDao.getInstance().addTheater(adminTheaterDto);
 		return result;
 	}
 	
