@@ -14,23 +14,20 @@ public class MemberRsvDetailDao extends Dao {
 	private MemberRsvDetailDao() {}
 	public static MemberRsvDetailDao getInstance() {return instance;}
 	
-		public ArrayList<MemberRsvDetailDto> movieRsv(MemberRsvDetailDto memberRsvDeatilDto) {
+		public ArrayList<MemberRsvDetailDto> printMovieName( ) {
 			ArrayList<MemberRsvDetailDto> list = new ArrayList<>();
-			
 			try{String sql = "select movieId from movie";
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					MemberRsvDetailDto memberRsvDetailDto = new MemberRsvDetailDto();
-					memberRsvDeatilDto.setRsvMovieName(rs.getString("movieId"));
+					memberRsvDetailDto.setRsvMovieName(rs.getString("movieId"));
 					list.add(memberRsvDetailDto);
 					
 				}
 				}catch(SQLException e) {System.out.println(e);}
-			return list;		}
-		public ArrayList<MemberRsvDetailDto> movieRsv() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+			return list;
+			}
+		
 	
 }
