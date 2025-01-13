@@ -13,8 +13,7 @@ public class MemberRsvDetailController {
 	}
 	
 	public ArrayList<MemberRsvDetailDto> printMovieName(){
-		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().movieRsv();
+		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printMovieName();
 		return result;
-		
 	}
 }
