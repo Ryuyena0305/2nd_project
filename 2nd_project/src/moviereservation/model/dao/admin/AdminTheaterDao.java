@@ -30,7 +30,7 @@ public class AdminTheaterDao extends Dao{
 	}
 	public boolean addTheater(AdminTheaterDto adminTheaterDto) {
 		try {
-		String sql = "insert int theater(theaterid,seat,screen) "
+		String sql = "insert into theater(theaterId,seat,screen) "
 				+ "values( '"+adminTheaterDto.getTid()+"' ,'"+adminTheaterDto.getTseat()+"','"+adminTheaterDto.getTscreen()+"' )";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		int count = ps.executeUpdate();
@@ -40,17 +40,14 @@ public class AdminTheaterDao extends Dao{
 		}
 		return false;
 	}
-	public void printBasicTheater() {
-		
-	}
-	public ArrayList<AdminTheaterDto> findAll() {
+	public ArrayList<AdminTheaterDto> printBasicTheater() {
 		ArrayList<AdminTheaterDto> list = new ArrayList<>();
 		try {
 			String sql = "select * from theater";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				int tid = rs.getInt("teaterId");
+				int tid = rs.getInt("theaterId");
 				int tseat = rs.getInt("seat");
 				String tscreen = rs.getString("screen");
 	
@@ -62,6 +59,48 @@ public class AdminTheaterDao extends Dao{
 		}
 		return list;
 	}
+	
+	public AdminTheaterDto findPrintDetailTheater(int tid) {
+		try {
+	        String sql = "select * from Theater where theaterid = ? ";
+	        PreparedStatement ps = conn.prepareStatement(sql);
+	        ps.setInt(1, tid);
+	        ResultSet rs = ps.executeQuery();
+	        
+	        if (rs.next()) {
+	         
+	        	AdminTheaterDto adminTheaterDto = new AdminTheaterDto(
+	        		rs.getInt("theaterId"),
+	                rs.getInt("seat"),
+	                rs.getString("screen")
+	            );
+	            return adminTheaterDto;  // 조회된 관 객체 반환
+	        }
+	    } catch (Exception e) {
+	        System.out.println(e);
+	    }
+	    return null;
+	}
+	public AdminTheaterDto printDetailTheater(AdminTheaterDto adminTheaterDto) {
+		try {
+			String sql = "select * from theater";
+			PreparedStatement ps = conn.prepareStatement( sql );
+			ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+	         
+	        	adminTheaterDto = new AdminTheaterDto(
+	        		rs.getInt("theaterId"),
+	                rs.getInt("seat"),
+	                rs.getString("screen")
+	               
+	            );
+				 return adminTheaterDto;
+		}
+		}catch(Exception e) {System.out.println(e);}	
+		return adminTheaterDto;
+	}
+	
 	public boolean updateTheater(AdminTheaterDto adminTheaterDto) {
 		try {
 			//[1] SQL 작성한다.
@@ -71,6 +110,7 @@ public class AdminTheaterDao extends Dao{
 			//[*] 기재된 SQL에 매개변수 값 대입한다.
 			ps.setInt(1, adminTheaterDto.getTseat());
 			ps.setString(2, adminTheaterDto.getTscreen());
+			ps.setInt(3,adminTheaterDto.getTid());
 			//[3] 기재된 SQL 실행하고 결과를 받는다.
 			int count = ps.executeUpdate();
 			//[4] 결과에 따른 처리 및 변환을 한다.
@@ -133,7 +173,6 @@ public class AdminTheaterDao extends Dao{
 	    }
 	    return null;
 	}
-	
 	
 
 }
