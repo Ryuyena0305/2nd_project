@@ -14,7 +14,7 @@ public class MemberResvView {
 			System.out.println("1.예매등록 2.리뷰 3.예매확인 4.예매삭제 5.회원정보 수정 6.회원탈퇴 7.로그아웃");
 			int choose = scan.nextInt();
 			if (choose == 1) {}
-			else if(choose == 2) {}
+			else if(choose == 2) {MemberReviewView.getInstance().run();}
 			else if(choose == 3) {}
 			else if(choose == 4) {}
 			else if(choose == 5) {MemberView.getInstance().update();}

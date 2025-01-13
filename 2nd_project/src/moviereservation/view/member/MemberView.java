@@ -13,11 +13,11 @@ public class MemberView {
 	private Scanner scan = new Scanner(System.in);
 	public void run() {
 		while(true) {
-			System.out.println("1.회원가입 2.로그인");
+			System.out.println("1.회원가입 2.로그인 3.뒤로가기");
 			int choose = scan.nextInt();
 			if(choose == 1) {signup();}
 			else if(choose ==2) {login();}
-			
+			else if(choose ==3) {break;}
 		}
 	}
 	// 1. 회원가입 화면
