@@ -65,8 +65,8 @@ public class AdminMovieTimeDao extends Dao {
 	            return result > 0; 
 	        } catch (SQLException e) {
 	            System.out.println(e);
-	            return false;
 	        }
+			return false;
 	    }
 		public boolean updateByNum(AdminMovieTimeDto adminMovieTimeDto) {
 		    String sql = "update timeTable set startTime = ?, finishTime = ?, movieDate = ?, theaterId = ?, movieId = ? where timepk = ?";
