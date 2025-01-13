@@ -17,12 +17,12 @@ public class AdminTheaterController {
 	}
 	
 	public ArrayList<AdminTheaterDto> printBasicTheater() {
-		ArrayList<AdminTheaterDto> result=AdminTheaterDao.getInstance().findAll();
+		ArrayList<AdminTheaterDto> result=AdminTheaterDao.getInstance().printBasicTheater();
 		return result;
 	}
-	public AdminTheaterDto printDetailTheater(int tid) {
-		// TODO Auto-generated method stub
-		return null;
+	public AdminTheaterDto printDetailTheater(AdminTheaterDto adminTheaterDto) {
+		AdminTheaterDto result = AdminTheaterDao.getInstance().printDetailTheater(adminTheaterDto);
+		return result;
 	}
 
 	
@@ -43,6 +43,9 @@ public class AdminTheaterController {
 		AdminTheaterDto adminTheaterDto = AdminTheaterDao.getInstance().finddeleteTheater(tid);
 		return adminTheaterDto;
 	}
-	
+	public AdminTheaterDto findPrintDetailTheater(int tid) {
+		AdminTheaterDto adminTheaterDto = AdminTheaterDao.getInstance().findPrintDetailTheater(tid);
+		return adminTheaterDto;
+	}
 
 }
