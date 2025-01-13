@@ -21,8 +21,8 @@ public class AdminPrintUserView {
 		adminDto.setApw(apw);
 		boolean result = AdminInfoController.getInstance().checkPw(adminDto);
 		if(result) {
-			System.out.println("출력할 회원 이름 : "); 
-			System.out.println("출력할 회원 생년월일 : "); 
+			System.out.println("회원번호\t사용자아이디\t사용자이름\t영화이름\t영화날짜\t상영관\n");
+		
 		}
 		else {System.out.println("비밀번호가 일치하지 않습니다.");}
 	}

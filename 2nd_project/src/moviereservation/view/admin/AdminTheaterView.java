@@ -94,27 +94,27 @@ public class AdminTheaterView {
 			System.out.print(result.getTid()+"관\t");
 			System.out.print(result.getTseat()+"석\t");
 			System.out.print(result.getTscreen()+"\n");
-			System.out.printf("   %2d %2d %2d %2d %2d %2d %2d %2d %2d %3d\n",1,2,3,4,5,6,7,8,9,10);
-			   int totalSeats = result.getTseat();  
-			    int rows = (totalSeats + 9) / 10;  
+			System.out.printf("  %2d %2d %2d %2d %2d %2d %2d %2d %2d %3d\n",1,2,3,4,5,6,7,8,9,10);
+			 int rows = result.getTseat() / 10;  // 전체 좌석을 10으로 나누어서 행 수 구하기
+			    int remainingSeats = result.getTseat() % 10;  // 나머지 좌석 처리
 
-			    for (int i = 1; i <= rows * 10; i++) {
-			        // 행 번호 출력 (1~rows)
-			    	
-			        if (i % 10 == 1) {
-			            System.out.printf("%2d ",(i - 1) / 10 + 1); 
+			    // 행 출력
+			    for (int row = 1; row <= rows; row++) {  // 각 행에 대해
+			        System.out.printf("%2d",row);  // 행 번호 출력
+			        for (int col = 1; col <= 10; col++) {  // 각 행에 대해 10개의 "□" 출력
+			            System.out.printf("%2s ","□");
 			        }
-
-			        if (i <= totalSeats) {
-			            System.out.print(" □ ");
-			        }
-
-			        // 10개의 좌석을 출력하고 줄 바꿈
-			        if (i % 10 == 0) {
-			            System.out.println();
-			        }
+			        System.out.println();  // 각 행 끝날 때 줄 바꿈
 			    }
-			    System.out.println();
+
+			    // 남은 좌석 출력 (10의 배수로 나눠서 안 맞는 경우 처리)
+			    if (remainingSeats > 0) {
+			    	 System.out.printf("%2d",rows);  // 마지막 행 번호 출력
+			        for (int i = 1; i <= remainingSeats; i++) {
+			        	 System.out.printf("%2s ","□");
+			        }
+			        System.out.println();  // 남은 좌석 출력 후 줄 바꿈
+			    }
 		}
 	}
 	
