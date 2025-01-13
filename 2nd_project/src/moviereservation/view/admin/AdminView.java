@@ -57,15 +57,24 @@ public class AdminView {
 					+ "5. 회원정보 수정\r\n"
 					+ "6. 회원정보 삭제\r\n"
 					+ "7. 로그아웃");
+//			System.out.println(" ㅡㅡㅡㅡMENUㅡㅡㅡㅡ");
+//			System.out.println("| 1. 영화정보 관리		|");
+//			System.out.println("| 2. 사용자 계정출력	|");
+//			System.out.println("| 3. 상영시간표 관리	|");
+//			System.out.println("| 4. 영화상영관 관리	|");
+//			System.out.println("| 5. 회원정보 수정		|");
+//			System.out.println("| 6. 회원정보 삭제		|");
+//			System.out.println("| 7. 로그아웃			|");
+//			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 			int adminChoose = scan.nextInt();
 			if (adminChoose == 1) {
 				AdminMovieInfoView.getInstance().MovieInfoView();
 			}else if(adminChoose == 2) {
-				AdminPrintUser.getInstance().PrintUser();
+				AdminPrintUserView.getInstance().PrintUser();
 			}else if(adminChoose == 3) {
 				AdminMovieTimeView.getInstance().MovieTimeView();
 			}else if(adminChoose == 4) {
-				AdminTheaterManage.getInstance();
+				AdminTheaterView.getInstance().TheaterView();
 			}else if(adminChoose == 5) {
 				AdminInfo.getInstance().adminUpdate();
 			}else if(adminChoose == 6) {

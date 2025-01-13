@@ -64,15 +64,16 @@ select * from movie;
 
 
 create table theater(
-theaterId tinyint unsigned auto_increment,
+theaterId tinyint unsigned,
+seat tinyint unsigned not null,
 screen varchar(20) not null,
 constraint primary key (theaterId)
 );
 
-insert into theater (screen) values( '2D');
-insert into theater (screen) values( '2D');
-insert into theater (screen) values( '2D');
-insert into theater (screen) values( 'IMAX');
+insert into theater (theaterId,seat,screen) values( 1,100,'2D');
+insert into theater (theaterId,seat,screen) values( 2,100,'2D');
+insert into theater (theaterId,seat,screen) values( 3,100,'2D');
+insert into theater (theaterId,seat,screen) values( 4,100,'IMAX');
 
 create table movieReview(
 reviewId int unsigned auto_increment,
@@ -115,12 +116,12 @@ create table resv(
 resvId int unsigned auto_increment,
 resvDate varchar(10),
 memberId int unsigned,
-startTime int unsigned not null,
+timepk int unsigned not null,
 constraint primary key (resvId),
 constraint foreign key(memberId ) references member(memberId),
-constraint foreign key(timepk ) references timeTable(timepk)
+constraint foreign key(timepk) references timeTable(timepk)
 );
-insert into resv(resvDate,memberId,startTime) values('2025-01-02',3,1);
-insert into resv(resvDate,memberId,startTime) values('2025-01-02',1,2);
-insert into resv(resvDate,memberId,startTime) values('2025-01-02',2,3);
-insert into resv(resvDate,memberId,startTime) values('2025-01-01',4,6);
+insert into resv(resvDate,memberId,timepk) values('2025-01-02',3,1);
+insert into resv(resvDate,memberId,timepk) values('2025-01-02',1,2);
+insert into resv(resvDate,memberId,timepk) values('2025-01-02',2,3);
+insert into resv(resvDate,memberId,timepk) values('2025-01-01',4,6);

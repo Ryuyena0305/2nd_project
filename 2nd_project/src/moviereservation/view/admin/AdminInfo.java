@@ -26,7 +26,7 @@ public class AdminInfo {
 			adminDto.setApw(newApw); adminDto.setAname(newAname);
 			boolean result1 = AdminInfoController.getInstance().adminUpdate(adminDto);
 			if(result1) {
-				System.out.println("수정완료");
+				System.out.println("관리자 정보 수정완료");
 			}
 		}
 		else {System.out.println("비밀번호가 일치하지 않습니다.");}

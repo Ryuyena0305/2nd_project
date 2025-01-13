@@ -1,6 +1,6 @@
 package moviereservation.controller.admin;
 
-import moviereservation.model.dao.AdminInfoDao;
+import moviereservation.model.dao.admin.AdminInfoDao;
 import moviereservation.model.dto.admin.AdminDto;
 
 public class AdminInfoController {
