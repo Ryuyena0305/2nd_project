@@ -70,7 +70,7 @@ screen varchar(20) not null,
 constraint primary key (theaterId)
 );
 
-insert into theater (theaterId,seat,screen) values( 1,100,'2D');
+insert into theater (theaterId,seat,screen) values( 1,135,'2D');
 insert into theater (theaterId,seat,screen) values( 2,100,'2D');
 insert into theater (theaterId,seat,screen) values( 3,100,'2D');
 insert into theater (theaterId,seat,screen) values( 4,100,'IMAX');
@@ -87,11 +87,11 @@ constraint foreign key(memberId) references member(memberId),
 constraint foreign key(movieId) references movie(movieId),
 constraint primary key (reviewId)
 );
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(1,'2025-01-01',4,1);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(1,'2025-01-07',2,1);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025-01-07',1,2);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(3,'2025-01-07',3,3);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025-01-07',3,1);
+insert into movieReview(reviewTitle,reviewContent,reviewRating,reviewDate,memberId,movieId) values('g','g',1,'2025-01-01',4,1);
+insert into movieReview(reviewTitle,reviewContent,reviewRating,reviewDate,memberId,movieId) values('g','g',1,'2025-01-07',2,1);
+insert into movieReview(reviewTitle,reviewContent,reviewRating,reviewDate,memberId,movieId) values('g','g',5,'2025-01-07',1,2);
+insert into movieReview(reviewTitle,reviewContent,reviewRating,reviewDate,memberId,movieId) values('g','g',3,'2025-01-07',3,3);
+insert into movieReview(reviewTitle,reviewContent,reviewRating,reviewDate,memberId,movieId) values('g','g',5,'2025-01-07',3,1);
 
 
 
@@ -127,3 +127,17 @@ insert into resv(resvDate,memberId,timepk) values('2025-01-02',3,1);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,timepk) values('2025-01-01',4,6);
+
+create table resvSeat(
+resvId2 int unsigned auto_increment,
+seatNum smallint not null,
+resvId int unsigned,
+constraint primary key (resvId2),
+constraint foreign key(resvId) references resv(resvId)
+);
+
+insert into resvSeat(seatNum,resvId) values(30,1);
+insert into resvSeat(seatNum,resvId) values(31,1);
+insert into resvSeat(seatNum,resvId) values(12,3);
+insert into resvSeat(seatNum,resvId) values(33,4);
+insert into resvSeat(seatNum,resvId) values(2,5);
