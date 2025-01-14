@@ -1,5 +1,6 @@
 package moviereservation.view.member;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -27,12 +28,15 @@ public class MemberRsvDetailView {
 	
 		public void movieRsvRes() {
 			while(true) {
+				printMovieName();
 				System.out.println("영화 선택 : ");
 				String rsvMovieName = scan.next();
-				System.out.println("영화 상영관 선택 : ");
-				String rsvTheater = scan.next();
+				printTheaterTime();
 				System.out.println("영화 상영 시간 선택 : ");
 				String rsvTime = scan.next();
+				printTheater();
+				System.out.println("영화 상영관 선택 : ");
+				String rsvTheater = scan.next();
 				System.out.println("영화 관람 인원 수 선택 : ");
 				int rsvPerson = scan.nextInt();
 				System.out.println("영화 좌석 선택 : ");
@@ -44,5 +48,26 @@ public class MemberRsvDetailView {
 		
 		public void printMovieName() {
 			ArrayList<MemberRsvDetailDto> result1 = MemberRsvDetailController.getInstance().printMovieName();
+			for(int index = 0; index <= result1.size()-1; index++) {
+				MemberRsvDetailDto memberRsvDetailDto = result1.get(index);
+				System.out.println(memberRsvDetailDto.getMovieId() + "." + memberRsvDetailDto.getRsvMovieName());
+				
+			}
+		} // printMovieName end
+		
+		public void printTheater() {
+			ArrayList<MemberRsvDetailDto> result = MemberRsvDetailController.getInstance().printTheater();
+			for(int i = 0; i <= result.size()-1; i++) {
+				MemberRsvDetailDto memberRsvDetailDto = result.get(i);
+				System.out.println(memberRsvDetailDto.getTheaterId() +"."+ memberRsvDetailDto.getRsvScreen());
+			}
+		}
+		
+		public void printTheaterTime() {
+			ArrayList<MemberRsvDetailDto> result = MemberRsvDetailController.getInstance().printTheaterTime();
+			for(int i = 0; i <= result.size()-1; i++) {
+				MemberRsvDetailDto memberRsvDetailDto = result.get(i);
+				System.out.println(memberRsvDetailDto.getMovieDate() +"."+ memberRsvDetailDto.getStartTime() +"."+ memberRsvDetailDto.getFinishTime());
+			}
 		}
 } // c end

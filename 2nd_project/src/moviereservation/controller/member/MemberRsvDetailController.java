@@ -16,4 +16,14 @@ public class MemberRsvDetailController {
 		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printMovieName();
 		return result;
 	}
+	
+	public ArrayList<MemberRsvDetailDto> printTheater(){
+		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheater();
+		return result;
+	}
+	
+	public ArrayList<MemberRsvDetailDto> printTheaterTime(){
+		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheaterTime();
+		return result;
+	}
 }

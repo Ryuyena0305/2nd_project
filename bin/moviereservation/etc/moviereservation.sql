@@ -77,8 +77,10 @@ insert into theater (theaterId,seat,screen) values( 4,100,'IMAX');
 
 create table movieReview(
 reviewId int unsigned auto_increment,
+reviewTitle varchar(20) not null,
+reviewContent varchar(100) not null,
 reviewRating int not null,
-reviewDate datetime default now(),
+reviewDate varchar(20) not null,
 memberId int unsigned,
 movieId int unsigned,
 constraint foreign key(memberId) references member(memberId),
@@ -125,3 +127,5 @@ insert into resv(resvDate,memberId,timepk) values('2025-01-02',3,1);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,timepk) values('2025-01-01',4,6);
+select movieDate,startTime,finishTime from timeTable;
+SHOW TABLES FROM moviereservation;
