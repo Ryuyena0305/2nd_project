@@ -70,7 +70,7 @@ public class AdminView {
 			if (adminChoose == 1) {
 				AdminMovieInfoView.getInstance().MovieInfoView();
 			}else if(adminChoose == 2) {
-				AdminPrintUserView.getInstance().PrintUser();
+				AdminPrintUserView.getInstance().printUser();
 			}else if(adminChoose == 3) {
 				AdminMovieTimeView.getInstance().MovieTimeView();
 			}else if(adminChoose == 4) {

@@ -90,30 +90,29 @@ public class AdminTheaterView {
 		AdminTheaterDto result =AdminTheaterController.getInstance().printDetailTheater(adminTheaterDto);
 	
 		if(result !=null) {
-			System.out.println("상영관번호\t전체좌석수\t스크린\n");
+			System.out.print("상영관번호\t전체좌석수\t스크린\n");
 			System.out.print(result.getTid()+"관\t");
 			System.out.print(result.getTseat()+"석\t");
 			System.out.print(result.getTscreen()+"\n");
+			System.out.print("--------------SCREEN--------------"+"\n");
 			System.out.printf("  %2d %2d %2d %2d %2d %2d %2d %2d %2d %3d\n",1,2,3,4,5,6,7,8,9,10);
-			 int rows = result.getTseat() / 10;  // 전체 좌석을 10으로 나누어서 행 수 구하기
-			    int remainingSeats = result.getTseat() % 10;  // 나머지 좌석 처리
+			 int rows = result.getTseat() / 10 ;  // 전체 좌석을 10으로 나누어서 행 수 구하기
+			    int remainSeat = result.getTseat() % 10;  // 나머지 좌석 처리
 
 			    // 행 출력
-			    for (int row = 1; row <= rows; row++) {  // 각 행에 대해
+			    for (int row = 1; row <= rows-1; row++) {  // 각 행에 대해
 			        System.out.printf("%2d",row);  // 행 번호 출력
 			        for (int col = 1; col <= 10; col++) {  // 각 행에 대해 10개의 "□" 출력
 			            System.out.printf("%2s ","□");
 			        }
-			        System.out.println();  // 각 행 끝날 때 줄 바꿈
+			        System.out.println();
 			    }
-
-			    // 남은 좌석 출력 (10의 배수로 나눠서 안 맞는 경우 처리)
-			    if (remainingSeats > 0) {
+			    if (remainSeat > 0) {
 			    	 System.out.printf("%2d",rows);  // 마지막 행 번호 출력
-			        for (int i = 1; i <= remainingSeats; i++) {
+			        for (int i = 1; i <= remainSeat; i++) {
 			        	 System.out.printf("%2s ","□");
 			        }
-			        System.out.println();  // 남은 좌석 출력 후 줄 바꿈
+			        System.out.println();  
 			    }
 		}
 	}
