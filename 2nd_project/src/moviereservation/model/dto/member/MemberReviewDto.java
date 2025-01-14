@@ -9,6 +9,7 @@ public class MemberReviewDto {
 	private String movieName;
 	private int memberId;	// 회원번호
 	private int movieId;	// 영화번호
+	private String mid;
 	public MemberReviewDto() {}
 	public MemberReviewDto(int reviewId, String reviewTitle, String reviewContent, int reviewRating, String reviewDate,
 			String movieName, int memberId, int movieId) {
@@ -23,8 +24,6 @@ public class MemberReviewDto {
 		this.movieId = movieId;
 	}
 
-	
-	
 	public MemberReviewDto(int reviewId, String reviewTitle, String reviewContent, int reviewRating, String reviewDate,
 			String movieName) {
 		super();
@@ -90,6 +89,12 @@ public class MemberReviewDto {
 	}
 	public void setReviewContent(String reviewContent) {
 		this.reviewContent = reviewContent;
+	}
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
 	}
 	
 }
