@@ -32,22 +32,21 @@ public class AdminPrintUserView {
 		boolean result = AdminInfoController.getInstance().checkPw(adminDto);
 
 		if (result) {
-			System.out.printf("%3s %7s %5s %8s %10s %3s %3s %8s\n",
-					"회원번호","사용자이름","사용자아이디","영화이름","영화날짜","상영관","좌석","예약날짜");
 			
 			ArrayList<AdminPrintUserDto> result1 = AdminPrintUserController.getInstance().printUser();
-			System.out.println(result1);
-			for (int index = 0; index <= result1.size() - 1; index++) {
+			System.out.printf("%4s %5s %6s %4s %7s %8s %3s %6s %7s\n",
+					"회원번호","사용자이름","사용자아이디","영화이름","영화날짜","상영관","좌석","예약날짜","예약번호");
+			for(int index=0;index<=result1.size()-1;index++) {
 				AdminPrintUserDto adminPrintUserDto = result1.get(index);
-				System.out.print(adminPrintUserDto.getMemberId() + "\t");
-				System.out.print(adminPrintUserDto.getmId() + "\t");
-				System.out.print(adminPrintUserDto.getMname()+"\t");
-				System.out.print(adminPrintUserDto.getMovieName()+"\t");
-				System.out.print(adminPrintUserDto.getMovieDate()+"\t");
-				System.out.print(adminPrintUserDto.getTheaterId()+"관\t");
-				System.out.print(adminPrintUserDto.getSeatNum()+"번\t");
-				System.out.print(adminPrintUserDto.getRevDate()+"\t");
-				
+				System.out.printf("%4d ",adminPrintUserDto.getMemberId());
+				System.out.printf("%6s ",adminPrintUserDto.getMname());
+				System.out.printf("%9s ",adminPrintUserDto.getmId());
+				System.out.printf("%5s ",adminPrintUserDto.getMovieName());
+				System.out.printf("%13s ",adminPrintUserDto.getMovieDate());
+				System.out.printf("%4d관 ",adminPrintUserDto.getTheaterId());
+				System.out.printf("%4d ",adminPrintUserDto.getSeatNum());
+				System.out.printf("%11s ",adminPrintUserDto.getRevDate());
+				System.out.printf("%4d\n",adminPrintUserDto.getResvId());
 			}
 		} else {
 			System.out.println("비밀번호가 일치하지 않습니다.");

@@ -13,8 +13,10 @@ public class AdminPrintUserController {
 		return instance;
 	}
 	public ArrayList<AdminPrintUserDto> printUser() {
-		ArrayList<AdminPrintUserDto> result = AdminPrintUserDao.getInstance().printUser();
+		ArrayList<AdminPrintUserDto> result = 
+				AdminPrintUserDao.getInstance().printUser();
 		return result;
 	}
+
 
 }

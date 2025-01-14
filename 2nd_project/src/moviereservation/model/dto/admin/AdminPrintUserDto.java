@@ -12,8 +12,10 @@ public class AdminPrintUserDto {
 	private int resvId;
 	public AdminPrintUserDto() {}
 	
-	public AdminPrintUserDto(int resvId,int memberId, String mId, String mname, String movieName, String movieDate, int theaterId,
-			int seatNum, String resvDate) {
+
+	public AdminPrintUserDto(int memberId, String mId, String mname, String movieName, String movieDate, int theaterId,
+			int seatNum, String resvDate, int resvId) {
+	
 		this.memberId = memberId;
 		this.mId = mId;
 		this.mname = mname;
@@ -24,6 +26,8 @@ public class AdminPrintUserDto {
 		this.resvDate = resvDate;
 		this.resvId = resvId;
 	}
+
+
 	public AdminPrintUserDto(int resvId,String resvDate) {
 		this.resvId = resvId;
 		this.resvDate = resvDate;
@@ -32,6 +36,22 @@ public class AdminPrintUserDto {
 
 	public int getMemberId() {
 		return memberId;
+	}
+
+	public String getResvDate() {
+		return resvDate;
+	}
+
+	public void setResvDate(String resvDate) {
+		this.resvDate = resvDate;
+	}
+
+	public int getResvId() {
+		return resvId;
+	}
+
+	public void setResvId(int resvId) {
+		this.resvId = resvId;
 	}
 
 	public void setMemberId(int memberId) {
@@ -98,8 +118,9 @@ public class AdminPrintUserDto {
 	public String toString() {
 		return "AdminPrintUserDto [memberId=" + memberId + ", mId=" + mId + ", mname=" + mname + ", movieName="
 				+ movieName + ", movieDate=" + movieDate + ", theaterId=" + theaterId + ", seatNum=" + seatNum
-				+ ", revDate=" + resvDate + "]";
+				+ ", resvDate=" + resvDate + ", resvId=" + resvId + "]";
 	}
+
 
 
 	
