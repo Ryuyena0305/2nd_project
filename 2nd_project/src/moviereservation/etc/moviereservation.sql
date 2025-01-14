@@ -87,11 +87,11 @@ constraint foreign key(memberId) references member(memberId),
 constraint foreign key(movieId) references movie(movieId),
 constraint primary key (reviewId)
 );
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(1,'2025-01-01',4,1);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(1,'2025-01-07',2,1);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025-01-07',1,2);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(3,'2025-01-07',3,3);
-insert into movieReview(reviewRating,reviewDate,memberId,movieId) values(5,'2025-01-07',3,1);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰1', '하하하', 1,'2025-01-01',4,1);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰2', '허허허', 1,'2025-01-07',2,1);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰3', '호호호', 5,'2025-01-07',1,2);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰4', '후후후', 3,'2025-01-07',3,3);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰5', '히히히', 5,'2025-01-07',3,1);
 
 
 
