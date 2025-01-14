@@ -33,9 +33,10 @@ public class AdminPrintUserView {
 
 		if (result) {
 			System.out.printf("%3s %7s %5s %8s %10s %3s %3s %8s\n",
-					"회원번호","사용자아이디","사용자이름","영화이름","영화날짜","상영관","좌석","예약날짜");
+					"회원번호","사용자이름","사용자아이디","영화이름","영화날짜","상영관","좌석","예약날짜");
 			
 			ArrayList<AdminPrintUserDto> result1 = AdminPrintUserController.getInstance().printUser();
+			System.out.println(result1);
 			for (int index = 0; index <= result1.size() - 1; index++) {
 				AdminPrintUserDto adminPrintUserDto = result1.get(index);
 				System.out.print(adminPrintUserDto.getMemberId() + "\t");
@@ -44,11 +45,13 @@ public class AdminPrintUserView {
 				System.out.print(adminPrintUserDto.getMovieName()+"\t");
 				System.out.print(adminPrintUserDto.getMovieDate()+"\t");
 				System.out.print(adminPrintUserDto.getTheaterId()+"관\t");
-				System.out.print(adminPrintUserDto.getSeatNum()+"\t");
+				System.out.print(adminPrintUserDto.getSeatNum()+"번\t");
 				System.out.print(adminPrintUserDto.getRevDate()+"\t");
+				
 			}
 		} else {
 			System.out.println("비밀번호가 일치하지 않습니다.");
 		}
+		
 	}
 }

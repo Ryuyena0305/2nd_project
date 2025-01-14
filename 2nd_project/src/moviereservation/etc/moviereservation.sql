@@ -58,7 +58,7 @@ insert into movie (movieName,runTime,movieGrade,genreId) values( '기생충',131
 insert into movie (movieName,runTime,movieGrade,genreId) values( '하얼빈',115,'15세',4);
 insert into movie (movieName,runTime,movieGrade,genreId) values( '인턴',121,'12세',4);
 insert into movie (movieName,runTime,movieGrade,genreId) values( '파묘',134,'15세',5);
-insert into movie (movieName,runTime,movieGrade,genreId) values( 'About Time',123,'15세',3);
+insert into movie (movieName,runTime,movieGrade,genreId) values( '소방관',106,'12세',4);
 
 select * from movie;
 
@@ -140,4 +140,14 @@ insert into resvSeat(seatNum,resvId) values(30,1);
 insert into resvSeat(seatNum,resvId) values(31,1);
 insert into resvSeat(seatNum,resvId) values(12,3);
 insert into resvSeat(seatNum,resvId) values(33,4);
-insert into resvSeat(seatNum,resvId) values(2,5);
+
+
+SELECT member.mname,resv.resvId, member.memberId, member.mId, movie.movieName, timeTable.movieDate,
+ theater.theaterId, resvSeat.seatNum,resv.resvDate
+FROM resv
+JOIN member ON resv.memberId = member.memberId
+JOIN timeTable ON resv.timepk = timeTable.timepk
+JOIN movie ON timeTable.movieId = movie.movieId
+JOIN theater ON timeTable.theaterId = theater.theaterId
+JOIN resvSeat ON resv.resvId = resvSeat.resvId
+ORDER BY resv.resvDate, resv.resvId;

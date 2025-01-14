@@ -7,12 +7,13 @@ public class AdminPrintUserDto {
 	private String movieName;
 	private String movieDate;
 	private int theaterId;
-	private String seatNum;
-	private String revDate;
+	private int seatNum;
+	private String resvDate;
+	private int resvId;
 	public AdminPrintUserDto() {}
 	
-	public AdminPrintUserDto(int memberId, String mId, String mname, String movieName, String movieDate, int theaterId,
-			String seatNum, String revDate) {
+	public AdminPrintUserDto(int resvId,int memberId, String mId, String mname, String movieName, String movieDate, int theaterId,
+			int seatNum, String resvDate) {
 		this.memberId = memberId;
 		this.mId = mId;
 		this.mname = mname;
@@ -20,7 +21,13 @@ public class AdminPrintUserDto {
 		this.movieDate = movieDate;
 		this.theaterId = theaterId;
 		this.seatNum = seatNum;
-		this.revDate = revDate;
+		this.resvDate = resvDate;
+		this.resvId = resvId;
+	}
+	public AdminPrintUserDto(int resvId,String resvDate) {
+		this.resvId = resvId;
+		this.resvDate = resvDate;
+		
 	}
 
 	public int getMemberId() {
@@ -71,28 +78,30 @@ public class AdminPrintUserDto {
 		this.theaterId = theaterId;
 	}
 
-	public String getSeatNum() {
+	public int getSeatNum() {
 		return seatNum;
 	}
 
-	public void setSeatNum(String seatNum) {
+	public void setSeatNum(int seatNum) {
 		this.seatNum = seatNum;
 	}
 
 	public String getRevDate() {
-		return revDate;
+		return resvDate;
 	}
 
 	public void setRevDate(String revDate) {
-		this.revDate = revDate;
+		this.resvDate = revDate;
 	}
 
 	@Override
 	public String toString() {
 		return "AdminPrintUserDto [memberId=" + memberId + ", mId=" + mId + ", mname=" + mname + ", movieName="
 				+ movieName + ", movieDate=" + movieDate + ", theaterId=" + theaterId + ", seatNum=" + seatNum
-				+ ", revDate=" + revDate + "]";
+				+ ", revDate=" + resvDate + "]";
 	}
+
+
 	
 
 	
