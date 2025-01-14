@@ -21,5 +21,4 @@ public class AdminMovieInfoController {
 	public boolean deleteByNum(int movieId) {
 		return AdminMovieInfoDao.getInstance().deleteByNum(movieId);
 	}
-
 }
