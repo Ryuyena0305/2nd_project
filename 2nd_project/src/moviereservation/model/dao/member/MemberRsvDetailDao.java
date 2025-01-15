@@ -32,10 +32,10 @@ public class MemberRsvDetailDao extends Dao {
 		public ArrayList<MemberRsvDetailDto> printTheater(int movieId){
 			ArrayList<MemberRsvDetailDto> list = new ArrayList<>();
 			try{
-				String sql = "select t.theaterId, theater.screen from timeTable t join theater ON t.theaterId = theater.theaterId where t.movieid = 2";
-				System.out.println(sql);
+				String sql = "select * from timeTable t join theater ON t.theaterId = theater.theaterId where t.movieid = ?";
+				
 				PreparedStatement ps = conn.prepareStatement(sql);
-				//ps.setInt(1, movieId);
+				ps.setInt(1, movieId);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					MemberRsvDetailDto memberRsvdetailDto = new MemberRsvDetailDto();
