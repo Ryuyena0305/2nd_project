@@ -31,17 +31,17 @@ insert into member ( mid, mpw ,mname, mbirth) values( 'guest4' , '4567' , '류�
 
 
 
-    create table genre(
+    create table categorie(
         genreId int unsigned auto_increment,
     genreName char(10) not null,
      constraint primary key( genreId )
     );
     
-insert into genre (genreName ) values( '액션' );
-insert into genre (genreName ) values( '판타지' );
-insert into genre (genreName ) values( '로맨스' );
-insert into genre (genreName ) values( '드라마' );
-insert into genre (genreName ) values( '미스터리' );
+insert into categorie (genreName ) values( '액션' );
+insert into categorie (genreName ) values( '판타지' );
+insert into categorie (genreName ) values( '로맨스' );
+insert into categorie (genreName ) values( '드라마' );
+insert into categorie (genreName ) values( '미스터리' );
 
 create table movie(
         movieId int unsigned auto_increment , 
