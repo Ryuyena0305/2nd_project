@@ -1,6 +1,7 @@
 package moviereservation.model.dao.member;
 
-import java.sql.Connection;
+
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,5 +67,33 @@ public class MemberRsvDetailDao extends Dao {
 				}
 			}catch(SQLException e) {System.out.println(e);}
 			return list;
+		}
+		
+		//예매 확인 
+		public boolean rsvCheck(int rsvId, int memberId) {
+			try{
+				String sql = "select * from resv where resvId = ? and memberId = ?";
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, rsvId);
+				ps.setInt(2, memberId);
+				ResultSet rs = ps.executeQuery();
+				if(rs.next()) {return true;}
+			}catch (Exception e) {System.out.println(e);}
+			return false;
+		}
+		
+		//예매 삭제
+		public boolean rsvCan(MemberRsvDetailDto memberRsvDetailDto) {
+			try{
+				String sql = "delete from resv where resvId = ?";
+							PreparedStatement ps = conn.prepareStatement(sql);
+				ps.setInt(1, memberRsvDetailDto.getRsvNum());
+				int count = ps.executeUpdate();
+				if(count == 1) {return true;}
+			}catch (Exception e) {
+				System.out.println(e);
+			}
+			return false;
+			
 		}
 }

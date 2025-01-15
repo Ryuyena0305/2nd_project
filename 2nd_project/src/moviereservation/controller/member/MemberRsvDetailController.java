@@ -26,4 +26,15 @@ public class MemberRsvDetailController {
 		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheaterTime(movieId);
 		return result;
 	}
-}
+	
+	//예매 취소
+	public boolean rsvCan(MemberRsvDetailDto memberRsvDetailDto) {
+		int loginMno = MemberController.getInstance().getLoginMno();
+		int rsvId = memberRsvDetailDto.getRsvNum();
+		boolean result = MemberRsvDetailDao.getInstance().rsvCheck(rsvId,loginMno);
+		if(result == false) {return false;}
+		boolean result2 = MemberRsvDetailDao.getInstance().rsvCan(memberRsvDetailDto);
+		return result2;
+	}
+	
+} //c end
