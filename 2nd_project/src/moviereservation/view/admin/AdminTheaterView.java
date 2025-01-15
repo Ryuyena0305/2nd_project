@@ -100,7 +100,7 @@ public class AdminTheaterView {
 			    int remainSeat = result.getTseat() % 10;  // 나머지 좌석 처리
 
 			    // 행 출력
-			    for (int row = 1; row <= rows-1; row++) {  // 각 행에 대해
+			    for (int row = 0; row <= rows-1; row++) {  // 각 행에 대해
 			        System.out.printf("%2d",row);  // 행 번호 출력
 			        for (int col = 1; col <= 10; col++) {  // 각 행에 대해 10개의 "□" 출력
 			            System.out.printf("%2s ","□");

@@ -95,11 +95,6 @@ insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memb
 
 
 
-
-
-
-
-
 create table timeTable(
     timepk int unsigned auto_increment,
 	startTime varchar(10),
@@ -132,7 +127,6 @@ insert into resv(resvDate,memberId,timepk) values('2025-01-02',3,1);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,timepk) values('2025-01-01',4,6);
-<<<<<<< HEAD
 
 create table resvSeat(
 resvId2 int unsigned auto_increment,
@@ -157,7 +151,5 @@ JOIN movie ON timeTable.movieId = movie.movieId
 JOIN theater ON timeTable.theaterId = theater.theaterId
 JOIN resvSeat ON resv.resvId = resvSeat.resvId
 ORDER BY resv.resvDate, resv.resvId;
-=======
-select movieDate,startTime,finishTime from timeTable;
-SHOW TABLES FROM moviereservation;
->>>>>>> branch 'CHB' of https://github.com/Ryuyena0305/2nd_project
+
+

@@ -81,10 +81,12 @@ public class AdminTheaterDao extends Dao{
 	    }
 	    return null;
 	}
+	
 	public AdminTheaterDto printDetailTheater(AdminTheaterDto adminTheaterDto) {
 		try {
-			String sql = "select * from theater";
+			String sql = "select * from theater where theaterId= ?";
 			PreparedStatement ps = conn.prepareStatement( sql );
+			ps.setInt(1, adminTheaterDto.getTid());
 			ResultSet rs = ps.executeQuery();
 
 	        if (rs.next()) {
@@ -98,7 +100,7 @@ public class AdminTheaterDao extends Dao{
 				 return adminTheaterDto;
 		}
 		}catch(Exception e) {System.out.println(e);}	
-		return adminTheaterDto;
+		return null;
 	}
 	
 	public boolean updateTheater(AdminTheaterDto adminTheaterDto) {
