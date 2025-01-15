@@ -43,7 +43,6 @@ public class MemberRsvDetailView {
 				int rsvSeat = scan.nextInt();
 				
 			}
-				
 		}
 		
 		public void printMovieName() {
@@ -71,4 +70,10 @@ public class MemberRsvDetailView {
 				System.out.println(memberRsvDetailDto.getTimepk() +"."+ memberRsvDetailDto.getMovieDate() +" / "+ memberRsvDetailDto.getStartTime() +" / "+ memberRsvDetailDto.getFinishTime());
 			}
 		}
+		
+		public void guestNum() {
+			
+		}
+		
+		public void 
 } // c end

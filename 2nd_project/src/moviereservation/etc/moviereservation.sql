@@ -152,9 +152,8 @@ JOIN theater ON timeTable.theaterId = theater.theaterId
 JOIN resvSeat ON resv.resvId = resvSeat.resvId
 ORDER BY resv.resvDate, resv.resvId;
 
-select theaterId, screen from timeTable join theater ON timeTable.theaterId = theater.theaterId where movieId = 1;
 
-SELECT timeTable.theaterId, theater.screen
-FROM timeTable
-JOIN theater ON timeTable.theaterId = theater.theaterId
-WHERE timeTable.movieId = 1;
+
+
+
+
