@@ -17,13 +17,13 @@ public class MemberRsvDetailController {
 		return result;
 	}
 	
-	public ArrayList<MemberRsvDetailDto> printTheater(){
-		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheater();
+	public ArrayList<MemberRsvDetailDto> printTheater(int movieId){
+		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheater(movieId);
 		return result;
 	}
 	
-	public ArrayList<MemberRsvDetailDto> printTheaterTime(){
-		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheaterTime();
+	public ArrayList<MemberRsvDetailDto> printTheaterTime(int movieId){
+		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheaterTime(movieId);
 		return result;
 	}
 }
