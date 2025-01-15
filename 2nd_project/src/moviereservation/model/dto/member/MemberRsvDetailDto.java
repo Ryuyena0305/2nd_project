@@ -13,11 +13,21 @@ public class MemberRsvDetailDto {
 	private String startTime;
 	private String finishTime;
 	private String movieDate;
+	public int getTimepk() {
+		return timepk;
+	}
+	public void setTimepk(int timepk) {
+		this.timepk = timepk;
+	}
+
+
+	private int timepk;
 	
 	public MemberRsvDetailDto() {}
-	public MemberRsvDetailDto(String startTime, String finishTime, String movieDate, int theaterId, String rsvScreen, int movieId, int rsvNum, String rsvMovieName, String rsvTheater, String rsvTime, int rsvPerson,
+	public MemberRsvDetailDto(int timepk, String startTime, String finishTime, String movieDate, int theaterId, String rsvScreen, int movieId, int rsvNum, String rsvMovieName, String rsvTheater, String rsvTime, int rsvPerson,
 			String rsvSeat) {
 		super();
+		this.timepk = timepk;
 		this.startTime = startTime;
 		this.finishTime = finishTime;
 		this.movieDate = movieDate;
