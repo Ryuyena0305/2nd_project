@@ -49,7 +49,7 @@ create table movie(
     runTime tinyint unsigned not null,
     movieGrade varchar(10) not null,
     genreId int unsigned not null,
-    constraint foreign key(genreId) references genre(genreId),
+    constraint foreign key(genreId) references categorie(genreId),
     constraint primary key( movieId )
 ); 
 
