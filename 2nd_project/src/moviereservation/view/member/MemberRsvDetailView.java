@@ -1,11 +1,11 @@
 package moviereservation.view.member;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import moviereservation.controller.member.MemberRsvDetailController;
-import moviereservation.model.dao.member.MemberRsvDetailDao;
+
 import moviereservation.model.dto.member.MemberRsvDetailDto;
 
 public class MemberRsvDetailView {
@@ -30,17 +30,17 @@ public class MemberRsvDetailView {
 			while(true) {
 				printMovieName();
 				System.out.println("영화 선택 : ");
-				String rsvMovieName = scan.next();
-				printTheaterTime();
+				int rsvMovieName = scan.nextInt();
+				printTheaterTime(rsvMovieName);
 				System.out.println("영화 상영 시간 선택 : ");
-				String rsvTime = scan.next();
-				printTheater();
+				int rsvTime = scan.nextInt();
+				printTheater(rsvMovieName);
 				System.out.println("영화 상영관 선택 : ");
-				String rsvTheater = scan.next();
+				int rsvTheater = scan.nextInt();
 				System.out.println("영화 관람 인원 수 선택 : ");
 				int rsvPerson = scan.nextInt();
 				System.out.println("영화 좌석 선택 : ");
-				String rsvSeat = scan.next();
+				int rsvSeat = scan.nextInt();
 				
 			}
 				
@@ -55,19 +55,20 @@ public class MemberRsvDetailView {
 			}
 		} // printMovieName end
 		
-		public void printTheater() {
-			ArrayList<MemberRsvDetailDto> result = MemberRsvDetailController.getInstance().printTheater();
+		public void printTheater(int movieId) {
+			ArrayList<MemberRsvDetailDto> result = MemberRsvDetailController.getInstance().printTheater(movieId);
 			for(int i = 0; i <= result.size()-1; i++) {
 				MemberRsvDetailDto memberRsvDetailDto = result.get(i);
 				System.out.println(memberRsvDetailDto.getTheaterId() +"."+ memberRsvDetailDto.getRsvScreen());
 			}
 		}
 		
-		public void printTheaterTime() {
-			ArrayList<MemberRsvDetailDto> result = MemberRsvDetailController.getInstance().printTheaterTime();
+		public void printTheaterTime(int movieId) {
+			ArrayList<MemberRsvDetailDto> result = MemberRsvDetailController.getInstance().printTheaterTime(movieId);
 			for(int i = 0; i <= result.size()-1; i++) {
 				MemberRsvDetailDto memberRsvDetailDto = result.get(i);
-				System.out.println(memberRsvDetailDto.getMovieDate() +"."+ memberRsvDetailDto.getStartTime() +"."+ memberRsvDetailDto.getFinishTime());
+				System.out.println("상영번호 / 상영날짜 / 시작시간 / 종료시간");
+				System.out.println(memberRsvDetailDto.getTimepk() +"."+ memberRsvDetailDto.getMovieDate() +" / "+ memberRsvDetailDto.getStartTime() +" / "+ memberRsvDetailDto.getFinishTime());
 			}
 		}
 } // c end

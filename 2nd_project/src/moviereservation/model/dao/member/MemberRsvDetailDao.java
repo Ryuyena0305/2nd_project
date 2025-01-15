@@ -29,14 +29,17 @@ public class MemberRsvDetailDao extends Dao {
 			return list;
 			}
 		
-		public ArrayList<MemberRsvDetailDto> printTheater(){
+		public ArrayList<MemberRsvDetailDto> printTheater(int movieId){
 			ArrayList<MemberRsvDetailDto> list = new ArrayList<>();
 			try{
-				String sql = "select theaterId, screen from theater";
+				String sql = "select t.theaterId, theater.screen from timeTable t join theater ON t.theaterId = theater.theaterId where t.movieid = 2";
+				System.out.println(sql);
 				PreparedStatement ps = conn.prepareStatement(sql);
+				//ps.setInt(1, movieId);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					MemberRsvDetailDto memberRsvdetailDto = new MemberRsvDetailDto();
+					memberRsvdetailDto.setMovieId(rs.getInt("movieId"));
 					memberRsvdetailDto.setTheaterId(rs.getInt("theaterId"));
 					memberRsvdetailDto.setRsvScreen(rs.getString("screen"));
 					list.add(memberRsvdetailDto);
@@ -45,15 +48,17 @@ public class MemberRsvDetailDao extends Dao {
 			return list;
 		}
 		
-		public ArrayList<MemberRsvDetailDto> printTheaterTime(){
+		public ArrayList<MemberRsvDetailDto> printTheaterTime(int movieId){
 			ArrayList<MemberRsvDetailDto> list = new ArrayList<>();
 			try{
-				String sql = "select movieDate, startTime, finishTime from timeTable where movieId = ?";
+				String sql = "select timepk, movieDate, startTime, finishTime from timeTable where movieId = ?";
 				PreparedStatement ps = conn.prepareStatement(sql);
 				//ps.setInt(1, );
+				ps.setInt(1, movieId);
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					MemberRsvDetailDto memberRsvDetailDto = new MemberRsvDetailDto();
+					memberRsvDetailDto.setTimepk(rs.getInt("timepk"));
 					memberRsvDetailDto.setMovieDate(rs.getString("movieDate"));
 					memberRsvDetailDto.setStartTime(rs.getString("startTime"));
 					memberRsvDetailDto.setFinishTime(rs.getString("finishTime"));
