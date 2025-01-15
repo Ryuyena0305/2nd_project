@@ -50,7 +50,7 @@ public class MemberRsvDetailDao extends Dao {
 			try{
 				String sql = "select movieDate, startTime, finishTime from timeTable where movieId = ?";
 				PreparedStatement ps = conn.prepareStatement(sql);
-				ps.setInt(1, );
+				//ps.setInt(1, );
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()) {
 					MemberRsvDetailDto memberRsvDetailDto = new MemberRsvDetailDto();
