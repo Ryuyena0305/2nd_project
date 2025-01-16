@@ -5,6 +5,7 @@ package moviereservation.model.dao.member;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.IconifyAction;
@@ -117,12 +118,12 @@ public class MemberRsvDetailDao extends Dao {
 				while(rs.next()) {
 				MemberRsvDetailDto memberRsvDetailDto1 = new MemberRsvDetailDto();
 				memberRsvDetailDto1.setRsvNum(rs.getInt("resvId")); //resv - resvId
-				memberRsvDetailDto1.setRsvMovieName("rsvMovieName"); //movie - movieName
+				memberRsvDetailDto1.setRsvMovieName(rs.getString("movieName")); //movie - movieName
 				memberRsvDetailDto1.setMovieDate(rs.getString("movieDate")); //timeTable - movieDate
 				memberRsvDetailDto1.setStartTime(rs.getString("startTime")); //timeTable - startTime
 				memberRsvDetailDto1.setFinishTime(rs.getString("finishTime")); //timeTable - finishTime
 				memberRsvDetailDto1.setRsvTheater(rs.getString("theaterId")); //theater - theaterId
-				memberRsvDetailDto1.setRsvSeat(rs.getInt("seat")); //theater - seat
+				memberRsvDetailDto1.setRsvSeat(rs.getInt("seatNum")); //theater - seat
 				memberRsvDetailDto1.setRsvTime(rs.getString("resvDate")); //resv - resvDate
 				list.add(memberRsvDetailDto1);
 			}
@@ -169,16 +170,67 @@ public class MemberRsvDetailDao extends Dao {
 			   
 			      return list; // 좌석 정보 리스트 반환
 			   }
-			   public boolean checkSeat(MemberRsvDetailDto memberRsvDetailDto) {
+			   // 좌석 중복 검사
+		   public boolean checkSeat(int rsvSeatNum) {
 			      try {
 			         String sql = "select count(*) from resvSeat where seatNum=?";
 			         PreparedStatement ps = conn.prepareStatement(sql);
-			         ps.setInt(1, memberRsvDetailDto.getRsvSeat());
+			         ps.setInt(1, rsvSeatNum);
 			         ResultSet rs = ps.executeQuery();
-			         if(rs.next()&& rs.getInt(1)>0) {
-			            return true;
+			         if (rs.next()) {
+			             int count = rs.getInt(1);
+			             System.out.println("좌석 번호 " + rsvSeatNum + "의 예약된 개수: " + count);
+			             return count > 0; // 1개 이상 예약된 경우 true 반환
 			         }
 			      }catch(Exception e) {System.out.println(e);}
 			      return false;
-			   }
+			   }	
+			   
+			   // 예약 
+		public int movieRsvRes(MemberRsvDetailDto memberRsvDetailDto , String nowDate , int loginMno ) {
+			
+			try {
+			String sql ="insert into resv(resvDate,memberId,timepk) values( ? ,? ,?)";
+		    PreparedStatement ps = conn.prepareStatement(sql , Statement.RETURN_GENERATED_KEYS );
+		    ps.setString( 1 , nowDate );
+		    ps.setInt( 2 , loginMno);
+		    ps.setInt( 3 ,  memberRsvDetailDto.getTimepk() );
+		    
+		    
+		    	ps.executeUpdate();
+		     ResultSet rs = ps.getGeneratedKeys();
+		     if( rs.next() ) {
+		    	 return rs.getInt(1);
+		     }
+		    
+		      }catch (Exception e) {System.out.println(e);}
+		      return 0;
+		  
+		}
+			// 예약 상세는 좌석 수 만큼 반복 
+		public boolean movieRsvRes( int resvId  , int rsvSeatNum) {
+			if(checkSeat(rsvSeatNum)) {
+				System.out.println("이미 좌석이 있습니다.");
+				return false;
+			}
+			try {
+				String sql ="insert into resvSeat(seatNum,resvId) values( ? ,? )";
+			    PreparedStatement ps = conn.prepareStatement(sql );
+			    ps.setInt( 1 , rsvSeatNum );
+			    ps.setInt( 2 , resvId);
+			    
+			    int count = ps.executeUpdate();
+			      if(count == 1) {return true;} // 회원가입 성공
+			      }catch (Exception e) {System.out.println(e);}
+			      return false;
+		}
+					
 }
+
+
+
+
+
+
+
+
