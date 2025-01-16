@@ -97,7 +97,7 @@ insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memb
 
 create table timeTable(
     timepk int unsigned auto_increment,
-	startTime varchar(10),
+   startTime varchar(10),
     finishTime varchar(10),
     movieDate varchar(10),
     theaterId tinyint unsigned,
@@ -151,9 +151,4 @@ JOIN movie ON timeTable.movieId = movie.movieId
 JOIN theater ON timeTable.theaterId = theater.theaterId
 JOIN resvSeat ON resv.resvId = resvSeat.resvId
 ORDER BY resv.resvDate, resv.resvId;
-
-
-
-
-
 

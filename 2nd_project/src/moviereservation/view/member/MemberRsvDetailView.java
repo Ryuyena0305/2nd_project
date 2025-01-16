@@ -30,32 +30,46 @@ public class MemberRsvDetailView {
 	
 		public void movieRsvRes() {
 	         
-	         while(true) {
 	            
-	            printMovieName();
-	            System.out.println("영화 선택 : ");
-	            int rsvMovieName = scan.nextInt();
-	            printTheaterTime(rsvMovieName);
-	            System.out.println("영화 상영 시간 선택 : ");
-	            int rsvTime = scan.nextInt();
-	            //printTheater(rsvMovieName);
-//	            System.out.println("영화 상영관 선택 : ");
-//	            int rsvTheater = scan.nextInt();
-	            System.out.println("영화 관람 인원 수 선택 : ");
-	            int rsvPerson = scan.nextInt();
-	            printTheater(rsvTime);
-	            System.out.println("영화 좌석 선택  ");
-	            System.out.println("좌석을 하나씩 입력해 주세요.");
-	            for(int index=0;index<=rsvPerson;index++) {
-	               System.out.println("예매 좌석 : ");
-	               int rsvSeatNum = scan.nextInt();
-	               MemberRsvDetailDto memberRsvDetailDto = new MemberRsvDetailDto();
-	               if(memberRsvDetailDto.getRsvSeat() == rsvSeatNum) {
-	                  System.out.println("이미 예매되어있는 좌석입니다.");
-	                  System.out.println("예매 좌석 : ");
-	               }
-	            }
-	            }
+            printMovieName();
+            System.out.println("영화 선택 : ");
+            int rsvMovieName = scan.nextInt();
+            printTheaterTime(rsvMovieName);
+            System.out.println("영화 상영 시간 선택 : ");
+            int rsvTime = scan.nextInt();
+            // printTheater(rsvMovieName);
+            // System.out.println("영화 상영관 선택 : ");
+            // int rsvTheater = scan.nextInt();
+            System.out.println("영화 관람 인원 수 선택 : ");
+            int rsvPerson = scan.nextInt();
+            printTheater(rsvTime);
+            System.out.println("영화 좌석 선택  ");
+            System.out.println("좌석을 하나씩 입력해 주세요.");
+            
+            int[] rsvSeatNums = new int[rsvPerson];
+            
+            
+            for(int index=0;index<=rsvPerson-1;index++) {
+            	System.out.println("예매 좌석 : ");
+            	rsvSeatNums[ index ] = scan.nextInt();
+   	          }
+            
+            // 영화번호 , 상영시간 , (배열)좌석(인원수)만큼
+            
+            MemberRsvDetailDto memberRsvDetailDto = new MemberRsvDetailDto();
+            memberRsvDetailDto.setMovieId(rsvMovieName);
+            memberRsvDetailDto.setTimepk(rsvTime);
+            //memberRsvDetailDto.setRsvPerson(rsvPerson);
+            
+            boolean result = 
+            MemberRsvDetailController.getInstance().movieRsvRes(memberRsvDetailDto, rsvSeatNums);
+            
+            if( result ) {
+            	System.out.println("예매 성공");
+            }else {
+            	System.out.println("예매 실패");
+            }
+            
 		}
 		
 		//영화 선택
@@ -118,7 +132,7 @@ public class MemberRsvDetailView {
 	                  System.out.printf("%2d", rows + 1);  // 마지막 행 번호 출력
 	                  for (int i = 1; i <= remainSeat; i++) {
 	                      if (reservedSeats.contains(seatNumber)) {
-	                          System.out.printf("%2s ", "■");  // 예약된 좌석
+	                          System.out.printf("%2s ", "□");  // 예약된 좌석
 	                      } else {
 	                          System.out.printf("%2s ", "□");  // 예약되지 않은 좌석
 	                      }

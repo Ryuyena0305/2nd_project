@@ -1,7 +1,10 @@
 package moviereservation.controller.member;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 
+import moviereservation.model.dao.member.MemberReviewDao;
 import moviereservation.model.dao.member.MemberRsvDetailDao;
 import moviereservation.model.dto.member.MemberRsvDetailDto;
 
@@ -13,6 +16,23 @@ public class MemberRsvDetailController {
 	}
 	
 	
+	public boolean movieRsvRes(MemberRsvDetailDto memberRsvDetailDto , int[] rsvSeatNums) {
+		
+		// [1] 예약 등록  , 날짜 , 현재 회원번호
+		String nowDate = LocalDate.now().toString();
+		int loginMno = MemberController.getInstance().getLoginMno();
+		
+		int resvId = MemberRsvDetailDao.getInstance().movieRsvRes(memberRsvDetailDto, nowDate , loginMno );
+		
+		// [2] 예약 상세 
+		
+		
+		// 현재 시트 수 만큼 dao 호출 
+		for( int i = 0 ; i<=rsvSeatNums.length-1 ; i++ ) {
+			MemberRsvDetailDao.getInstance().movieRsvRes(resvId, rsvSeatNums[i] );
+		}
+		return true;
+	}
 	public ArrayList<MemberRsvDetailDto> printMovieName(){
 	      ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printMovieName();
 	      return result;
