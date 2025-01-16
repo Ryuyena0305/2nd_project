@@ -23,9 +23,7 @@ public class AdminMovieInfoDao extends Dao {
 		ps.setString(3, adminMovieInfoDto.getMovieGrade());
 		ps.setInt(4, adminMovieInfoDto.getGenreId());
 		int count = ps.executeUpdate();
-		if(count == 1) {
-			return true;	
-		}
+		return count > 0;
 		} catch(SQLException e) {
 			System.out.println(e);
 		}

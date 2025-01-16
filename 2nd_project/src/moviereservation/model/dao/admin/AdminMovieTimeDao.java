@@ -24,9 +24,7 @@ public class AdminMovieTimeDao extends Dao {
 			ps.setInt(4, adminMovieTimeDto.getTheaterId());
 			ps.setInt(5, adminMovieTimeDto.getMovieId());
 			int count = ps.executeUpdate();
-			if (count == 1 ) {
-				return true;
-				}
+			return count > 0; // if(count == 1) {return true;} 원래 강사님 설명코드는 이코드인데 어차피 boolean기본값이 트루니까 if 생략함
 			} catch(SQLException e) {
 				System.out.println(e);
 			}
