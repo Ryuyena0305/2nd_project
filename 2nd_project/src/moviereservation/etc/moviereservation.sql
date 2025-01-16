@@ -97,7 +97,7 @@ insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memb
 
 create table timeTable(
     timepk int unsigned auto_increment,
-	startTime varchar(10),
+   startTime varchar(10),
     finishTime varchar(10),
     movieDate varchar(10),
     theaterId tinyint unsigned,
