@@ -13,6 +13,8 @@ public class MemberRsvDetailDto {
 	private String startTime;
 	private String finishTime;
 	private String movieDate;
+	private int totalSeat;
+	
 	public int getTimepk() {
 		return timepk;
 	}
@@ -24,9 +26,10 @@ public class MemberRsvDetailDto {
 	private int timepk;
 	
 	public MemberRsvDetailDto() {}
-	public MemberRsvDetailDto(int timepk, String startTime, String finishTime, String movieDate, int theaterId, String rsvScreen, int movieId, int rsvNum, String rsvMovieName, String rsvTheater, String rsvTime, int rsvPerson,
+	public MemberRsvDetailDto(int totalSeat, int timepk, String startTime, String finishTime, String movieDate, int theaterId, String rsvScreen, int movieId, int rsvNum, String rsvMovieName, String rsvTheater, String rsvTime, int rsvPerson,
 			String rsvSeat) {
 		super();
+		this.totalSeat = totalSeat;
 		this.timepk = timepk;
 		this.startTime = startTime;
 		this.finishTime = finishTime;
@@ -40,6 +43,12 @@ public class MemberRsvDetailDto {
 		this.rsvTime = rsvTime;
 		this.rsvPerson = rsvPerson;
 		this.rsvSeat = rsvSeat;
+	}
+	public int getTotalSeat() {
+		return totalSeat;
+	}
+	public void setTotalSeat(int totalSeat) {
+		this.totalSeat = totalSeat;
 	}
 	public String getStartTime() {
 		return startTime;
