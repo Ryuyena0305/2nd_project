@@ -12,19 +12,35 @@ public class MemberRsvDetailController {
 		return instance;
 	}
 	
+	
 	public ArrayList<MemberRsvDetailDto> printMovieName(){
-		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printMovieName();
-		return result;
-	}
+	      ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printMovieName();
+	      return result;
+	   }
+	   
+	   public ArrayList<MemberRsvDetailDto> printTheaterTime(int movieId){
+	      ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheaterTime(movieId);
+	      return result;
+	   }
+	    public MemberRsvDetailDto printTheater(int timeId) {
+	           return MemberRsvDetailDao.getInstance().printTheater(timeId);
+	       }
+	    
+	   public ArrayList<MemberRsvDetailDto> getRsvSeat(MemberRsvDetailDto memberRsvDetailDto, int rsvTime) {
+	      
+	      return MemberRsvDetailDao.getInstance().getRsvSeat(memberRsvDetailDto,rsvTime);
+	   }
 	
-	public ArrayList<MemberRsvDetailDto> printTheater(int movieId){
-		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheater(movieId);
+	// 영화 예매 내역 전체 출력
+	public ArrayList<MemberRsvDetailDto> printRsv(){
+		int loginMno = MemberController.getInstance().getLoginMno();
+		if (loginMno == 0) {
+	        System.out.println("로그인되지 않은 상태입니다.");
+	        return new ArrayList<>(); // 빈 리스트 반환
+	    }
+		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printRsv(loginMno);
 		return result;
-	}
-	
-	public ArrayList<MemberRsvDetailDto> printTheaterTime(int movieId){
-		ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printTheaterTime(movieId);
-		return result;
+		
 	}
 	
 	//예매 취소
