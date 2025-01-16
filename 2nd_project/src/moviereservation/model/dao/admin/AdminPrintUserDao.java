@@ -32,7 +32,6 @@ public class AdminPrintUserDao extends Dao{
 		ResultSet rs = ps.executeQuery();
 		
 		while(rs.next()) {
-			System.out.println(rs);
 			int memberId = rs.getInt("memberId");
 			int resvId = rs.getInt("resvId");
 			int theaterId = rs.getInt("theaterId");
@@ -47,7 +46,6 @@ public class AdminPrintUserDao extends Dao{
 					memberId, mId,mname,movieName,movieDate,theaterId,
 					seatNum, resvDate, resvId
 					);
-			System.out.println(adminPrintUserDto);
 			list.add(adminPrintUserDto);
 		}
 
