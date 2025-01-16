@@ -15,13 +15,13 @@ public class MemberReviewDao extends Dao{
 	public static MemberReviewDao getInstance() {return instance;}
 	// 영화 확인 SQL 처리 메소드
 	public int checkMovie(MemberReviewDto memberReviewDto) {
-		int movieId = -1;
+		int movieId = -1; // 영화가 존재하지 않음
 		try {
 		String sql = "select movieId from movie where movieName = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, memberReviewDto.getMovieName());
 		ResultSet rs = ps.executeQuery();
-		if(rs.next()) {
+		if(rs.next()) { // 주어진 영화 이름에 해당하는 영화가 데이터베이스에 존재하면, 그 영화의 movieId를 가져와 변수에 저장
 			movieId = rs.getInt("movieId");
 		}
 		}catch (Exception e) {System.out.println(e);}
@@ -40,7 +40,7 @@ public class MemberReviewDao extends Dao{
 		ps.setInt(5, memberReviewDto.getMemberId());
 		ps.setInt(6, memberReviewDto.getMovieId());
 		int count = ps.executeUpdate();
-		if(count == 1) {return true;}
+		if(count == 1) {return true;} // INSERT 쿼리가 성공적으로 하나의 행을 추가했으면 true 반환
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
@@ -52,7 +52,7 @@ public class MemberReviewDao extends Dao{
 				+ " inner join member as mm on mr.memberId = mm.memberId";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
-		while(rs.next()) {
+		while(rs.next()) { // 각 행에서 데이터를 순차적으로 읽어서 가져온 후 정보 저장하는 객체 생성
 			int reviewId = rs.getInt("reviewId");
 			String movieName = rs.getString("movieName");
 			String reviewTitle = rs.getString("reviewTitle");
@@ -69,6 +69,7 @@ public class MemberReviewDao extends Dao{
 	}
 	// 내가 쓴 리뷰 확인 SQL 처리 메소드
 	public boolean reviewCheck(int reviewId, int memberId) {
+		// 매개변수 : reviewId, memberId , 특정 리뷰(reviewId)의 작성자(memberId) 일치 여부 확인하기
 		try {
 		String sql = "select * from movieReview where reviewId = ? and memberId = ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -89,7 +90,7 @@ public class MemberReviewDao extends Dao{
 		ps.setInt(3, memberReviewDto.getReviewRating());
 		ps.setInt(4, memberReviewDto.getReviewId());
 		int count = ps.executeUpdate();
-		if(count == 1) {return true;}
+		if(count == 1) {return true;} // 하나의 행을 정상적으로 수정한 경우 true 반환
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}
@@ -100,7 +101,7 @@ public class MemberReviewDao extends Dao{
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, memberReviewDto.getReviewId());
 		int count = ps.executeUpdate();
-		if(count == 1) {return true;}
+		if(count == 1) {return true;} // 하나의 행을 정상적으로 삭제한 경우 true 반환
 		}catch (Exception e) {System.out.println(e);}
 		return false;
 	}

@@ -30,7 +30,7 @@ public class MemberDao extends Dao{
       PreparedStatement ps = conn.prepareStatement(sql);
       ps.setString(1, memberDto.getMid());
       ResultSet rs = ps.executeQuery();
-      if(rs.next() && rs.getInt(1) > 0) {
+      if(rs.next() && rs.getInt(1) > 0) { // 주어진 mid에 해당하는 회원이 존재하는지 여부를 확인
          return true;	// 아이디가 이미 존재
       }
       }catch (Exception e) {System.out.println(e);}
@@ -44,7 +44,7 @@ public class MemberDao extends Dao{
 	   ps.setString(1, memberDto.getMid());
 	   ps.setString(2, memberDto.getMpw());
 	   ResultSet rs = ps.executeQuery();
-	   if(rs.next()) {
+	   if(rs.next()) { // 주어진 mid와 mpw로 사용자가 존재하면 memberId를 반환하고, 존재하지 않으면 0을 반환
 		   int memberId = rs.getInt("memberId");
 		   return memberId;
 	   }
@@ -58,7 +58,7 @@ public class MemberDao extends Dao{
 	   PreparedStatement ps = conn.prepareStatement(sql);
 	   ps.setInt(1, loginMno);
 	   int count = ps.executeUpdate();
-	   if(count > 0) {
+	   if(count > 0) { // 하나 이상의 행을 삭제했음을 의미
 		   System.out.println("회원 탈퇴 성공");
 	   }
 	   else {
@@ -74,10 +74,10 @@ public class MemberDao extends Dao{
 	   PreparedStatement ps = conn.prepareStatement(sql);
 	   ps.setInt(1, memberDto.getMemberId());
 	   ResultSet rs = ps.executeQuery();
-	   if(rs.next()) {
+	   if(rs.next()) { // 주어진 memberId에 해당하는 회원의 비밀번호가 데이터베이스에 있는 비밀번호와 일치하는지 확인
 		   String pw = rs.getString("mpw");
 		   
-		   return pw.equals(memberDto.getMpw());
+		   return pw.equals(memberDto.getMpw()); // 일치하면 true 반환
 	   }
 	   }catch (Exception e) {System.out.println(e);}
 	   return false;
@@ -92,7 +92,7 @@ public class MemberDao extends Dao{
    ps.setString(3, memberDto.getMbirth());
    ps.setInt(4, memberDto.getMemberId());
    int count = ps.executeUpdate();
-   if(count == 1) {return true;}
+   if(count == 1) {return true;} // 하나의 행을 성공적으로 수정한 경우 true 반환
    }catch (Exception e) {System.out.println(e);}
    return false;
    
