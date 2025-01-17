@@ -171,11 +171,12 @@ public class MemberRsvDetailDao extends Dao {
 			      return list; // 좌석 정보 리스트 반환
 			   }
 			   // 좌석 중복 검사
-		   public boolean checkSeat(int rsvSeatNum) {
+		   public boolean checkSeat(int rsvSeatNum , int timepk) {
 			      try {
-			         String sql = "select count(*) from resvSeat where seatNum=?";
+			         String sql = "select count(*) from resvSeat inner join resv on resvSeat.resvId = resv.resvId where resvSeat.seatNum = ? and resv.timepk = ?";
 			         PreparedStatement ps = conn.prepareStatement(sql);
 			         ps.setInt(1, rsvSeatNum);
+			         ps.setInt(2, timepk);
 			         ResultSet rs = ps.executeQuery();
 			         if (rs.next()) {
 			             int count = rs.getInt(1);
@@ -209,10 +210,6 @@ public class MemberRsvDetailDao extends Dao {
 		}
 			// 예약 상세는 좌석 수 만큼 반복 
 		public boolean movieRsvRes( int resvId  , int rsvSeatNum) {
-			if(checkSeat(rsvSeatNum)) {
-				System.out.println("이미 좌석이 있습니다.");
-				return false;
-			}
 			try {
 				String sql ="insert into resvSeat(seatNum,resvId) values( ? ,? )";
 			    PreparedStatement ps = conn.prepareStatement(sql );

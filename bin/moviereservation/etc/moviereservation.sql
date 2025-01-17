@@ -31,17 +31,17 @@ insert into member ( mid, mpw ,mname, mbirth) values( 'guest4' , '4567' , '류�
 
 
 
-    create table genre(
+    create table categorie(
         genreId int unsigned auto_increment,
     genreName char(10) not null,
      constraint primary key( genreId )
     );
     
-insert into genre (genreName ) values( '액션' );
-insert into genre (genreName ) values( '판타지' );
-insert into genre (genreName ) values( '로맨스' );
-insert into genre (genreName ) values( '드라마' );
-insert into genre (genreName ) values( '미스터리' );
+insert into categorie (genreName ) values( '액션' );
+insert into categorie (genreName ) values( '판타지' );
+insert into categorie (genreName ) values( '로맨스' );
+insert into categorie (genreName ) values( '드라마' );
+insert into categorie (genreName ) values( '미스터리' );
 
 create table movie(
         movieId int unsigned auto_increment , 
@@ -49,7 +49,7 @@ create table movie(
     runTime tinyint unsigned not null,
     movieGrade varchar(10) not null,
     genreId int unsigned not null,
-    constraint foreign key(genreId) references genre(genreId),
+    constraint foreign key(genreId) references categorie(genreId),
     constraint primary key( movieId )
 ); 
 
@@ -127,7 +127,7 @@ insert into resv(resvDate,memberId,timepk) values('2025-01-02',3,1);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,timepk) values('2025-01-01',4,6);
-
+select * from resv;
 create table resvSeat(
 resvId2 int unsigned auto_increment,
 seatNum smallint not null,
@@ -141,7 +141,7 @@ insert into resvSeat(seatNum,resvId) values(31,1);
 insert into resvSeat(seatNum,resvId) values(12,3);
 insert into resvSeat(seatNum,resvId) values(33,4);
 
-
+select * from resvSeat;
 SELECT member.mname,resv.resvId, member.memberId, member.mId, movie.movieName, timeTable.movieDate,
  theater.theaterId, resvSeat.seatNum,resv.resvDate
 FROM resv
@@ -151,4 +151,9 @@ JOIN movie ON timeTable.movieId = movie.movieId
 JOIN theater ON timeTable.theaterId = theater.theaterId
 JOIN resvSeat ON resv.resvId = resvSeat.resvId
 ORDER BY resv.resvDate, resv.resvId;
+
+
+
+
+
 

@@ -27,12 +27,23 @@ public class MemberRsvDetailController {
 		// [2] 예약 상세 
 		
 		
-		// 현재 시트 수 만큼 dao 호출 
-		for( int i = 0 ; i<=rsvSeatNums.length-1 ; i++ ) {
-			MemberRsvDetailDao.getInstance().movieRsvRes(resvId, rsvSeatNums[i] );
+		// 저장한 시트 상태 확인
+		for(int i = 0; i<=rsvSeatNums.length-1; i++) {
+			boolean result2 = 
+			MemberRsvDetailDao.getInstance().checkSeat(rsvSeatNums[i] , memberRsvDetailDto.getTimepk());
+			if(result2 == true) {
+				return false;
+			}
 		}
-		return true;
+		
+		// 현재 시트 수 만큼 dao 호출
+		boolean result1 = false;
+		for( int i = 0 ; i<=rsvSeatNums.length-1 ; i++ ) {
+			result1 = MemberRsvDetailDao.getInstance().movieRsvRes(resvId, rsvSeatNums[i] );
+		}
+		return result1;
 	}
+	
 	public ArrayList<MemberRsvDetailDto> printMovieName(){
 	      ArrayList<MemberRsvDetailDto> result = MemberRsvDetailDao.getInstance().printMovieName();
 	      return result;

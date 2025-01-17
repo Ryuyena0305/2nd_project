@@ -127,7 +127,7 @@ insert into resv(resvDate,memberId,timepk) values('2025-01-02',3,1);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',1,2);
 insert into resv(resvDate,memberId,timepk) values('2025-01-02',2,3);
 insert into resv(resvDate,memberId,timepk) values('2025-01-01',4,6);
-
+select * from resv;
 create table resvSeat(
 resvId2 int unsigned auto_increment,
 seatNum smallint not null,
@@ -140,5 +140,6 @@ insert into resvSeat(seatNum,resvId) values(30,1);
 insert into resvSeat(seatNum,resvId) values(31,1);
 insert into resvSeat(seatNum,resvId) values(12,3);
 insert into resvSeat(seatNum,resvId) values(33,4);
+
 
 
