@@ -87,17 +87,17 @@ constraint foreign key(memberId) references member(memberId),
 constraint foreign key(movieId) references movie(movieId),
 constraint primary key (reviewId)
 );
-insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰1', '하하하', 1,'2025-01-01',4,1);
-insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰2', '허허허', 1,'2025-01-07',2,1);
-insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰3', '호호호', 5,'2025-01-07',1,2);
-insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰4', '후후후', 3,'2025-01-07',3,3);
-insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('리뷰5', '히히히ㅎ', 5,'2025-01-07',3,1);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('정말재밌어요!', '배우들 연기도 좋고 스토리가 탄탄해서 정말 재미있었어요', 5,'2025-01-01',4,1);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('가족들끼리 보기 좋은 영화', '감동이 있어서 가족들끼리 보기 좋은 영화같네요', 3,'2025-01-07',2,1);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('좋아하는 감독이라 챙겨봤습니다', '좋아하는 감독인만큼 재밌게 본 거 같네요', 5,'2025-01-07',1,2);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('해외에서 극찬한 영화', '우리나라 감성에 맞는지는 모르겠지만 해외에서 반응이 좋은 이유를 알겠네요', 3,'2025-01-07',3,3);
+insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values('2025년 첫 영화 관람', '2025년 된 기념으로 제일 땡기는 영화 봤는데 나름 재미있고 의미있었어요', 5,'2025-01-07',3,1);
 
-
+select * from movieReview;
 
 create table timeTable(
     timepk int unsigned auto_increment,
-   startTime varchar(10),
+	startTime varchar(10),
     finishTime varchar(10),
     movieDate varchar(10),
     theaterId tinyint unsigned,
@@ -140,20 +140,6 @@ insert into resvSeat(seatNum,resvId) values(30,1);
 insert into resvSeat(seatNum,resvId) values(31,1);
 insert into resvSeat(seatNum,resvId) values(12,3);
 insert into resvSeat(seatNum,resvId) values(33,4);
-
-select * from resvSeat;
-SELECT member.mname,resv.resvId, member.memberId, member.mId, movie.movieName, timeTable.movieDate,
- theater.theaterId, resvSeat.seatNum,resv.resvDate
-FROM resv
-JOIN member ON resv.memberId = member.memberId
-JOIN timeTable ON resv.timepk = timeTable.timepk
-JOIN movie ON timeTable.movieId = movie.movieId
-JOIN theater ON timeTable.theaterId = theater.theaterId
-JOIN resvSeat ON resv.resvId = resvSeat.resvId
-ORDER BY resv.resvDate, resv.resvId;
-
-
-
 
 
 
