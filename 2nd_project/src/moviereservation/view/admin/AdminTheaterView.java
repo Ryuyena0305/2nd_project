@@ -17,6 +17,7 @@ public class AdminTheaterView {
 	Scanner scan = new Scanner(System.in);
 	public void TheaterView() {
 		while(true) {
+			System.out.println("-------------------------MENU-------------------------");
 			System.out.println("1. 상영관 정보 등록 ");
 			System.out.println("2. 상영관 정보 출력 ");
 			System.out.println("3. 상영관 정보 수정 ");
@@ -24,19 +25,15 @@ public class AdminTheaterView {
 			System.out.println("5. 뒤로가기 ");
 			int theaterInfo = scan.nextInt();
 			if(theaterInfo==1) {
-				System.out.println("상영관 정보 등록");
 				addTheater();
 				
 			}else if(theaterInfo==2) {
-				System.out.println("상영관 정보 출력 ");
 				showAllTheaters();
 				
 			}else if(theaterInfo==3) {
-				System.out.println("상영관 정보 수정 ");
 				findupdateTheater();
 				
 			}else if(theaterInfo==4) {
-				System.out.println("상영관 정보 삭제");
 				finddeleteTheater();
 				
 			}else if(theaterInfo==5) {
@@ -59,7 +56,8 @@ public class AdminTheaterView {
 	}
 
 	public void showAllTheaters() {
-		System.out.println("1. 상영관 간결한 정보 출력");
+		System.out.println("------------------------CHOOSE------------------------");
+		System.out.println("1. 상영관 전체 정보 출력");
 		System.out.println("2. 상영관 정보와 배치가 포함된 상세 정보 출력");
 		int theaterSeat = scan.nextInt();
 		if(theaterSeat==1) {
@@ -68,7 +66,7 @@ public class AdminTheaterView {
 		}else if(theaterSeat==2) {
 			 findPrintDetailtheater();
 		}else {
-			System.out.println("1 2 중 선택하세요");
+			System.out.println("1 2 중 선택하세요.");
 		}
 
 	}
@@ -95,7 +93,7 @@ public class AdminTheaterView {
 			System.out.print(result.getTseat()+"석\t");
 			System.out.print(result.getTscreen()+"\n");
 			System.out.print("--------------SCREEN--------------"+"\n");
-			System.out.printf("  %2d %2d %2d %2d %2d %2d %2d %2d %2d %3d\n",1,2,3,4,5,6,7,8,9,10);
+			System.out.printf("  %4d %4d %4d %4d %4d %4d %4d %4d %4d %4d\n",1,2,3,4,5,6,7,8,9,10);
 			 int rows = result.getTseat() / 10 ;  // 전체 좌석을 10으로 나누어서 행 수 구하기
 			    int remainSeat = result.getTseat() % 10;  // 나머지 좌석 처리
 
@@ -135,9 +133,9 @@ public class AdminTheaterView {
 			adminTheaterDto.setTseat(Tseat); adminTheaterDto.setTscreen(Tscreen);
 			boolean result1 = AdminTheaterController.getInstance().updateTheater(adminTheaterDto);
 			if(result1) {
-				System.out.println("상영관 정보 수정완료");
+				System.out.println("[ 상영관 정보 수정완료 ]");
 			}
-			else {System.out.println("상영관 정보 수정실패");}
+			else {System.out.println("[ 상영관 정보 수정실패 ]");}
 		}
 	
 	
@@ -153,7 +151,7 @@ public class AdminTheaterView {
 	}
 	public void deleteTheater(AdminTheaterDto adminTheaterDto) {
 		AdminTheaterController.getInstance().deleteTheater(adminTheaterDto);
-		System.out.println("상영관 정보가 삭제되었습니다.");
+		System.out.println("[ 상영관 정보 삭제성공 ]");
 	}
 	
 	public void finddeleteTheater() {

@@ -97,7 +97,7 @@ insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memb
 
 create table timeTable(
     timepk int unsigned auto_increment,
-   startTime varchar(10),
+	startTime varchar(10),
     finishTime varchar(10),
     movieDate varchar(10),
     theaterId tinyint unsigned,
@@ -140,20 +140,5 @@ insert into resvSeat(seatNum,resvId) values(30,1);
 insert into resvSeat(seatNum,resvId) values(31,1);
 insert into resvSeat(seatNum,resvId) values(12,3);
 insert into resvSeat(seatNum,resvId) values(33,4);
-
-
-SELECT member.mname,resv.resvId, member.memberId, member.mId, movie.movieName, timeTable.movieDate,
- theater.theaterId, resvSeat.seatNum,resv.resvDate
-FROM resv
-JOIN member ON resv.memberId = member.memberId
-JOIN timeTable ON resv.timepk = timeTable.timepk
-JOIN movie ON timeTable.movieId = movie.movieId
-JOIN theater ON timeTable.theaterId = theater.theaterId
-JOIN resvSeat ON resv.resvId = resvSeat.resvId
-ORDER BY resv.resvDate, resv.resvId;
-
-
-
-
 
 

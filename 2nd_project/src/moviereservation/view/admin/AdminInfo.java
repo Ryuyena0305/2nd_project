@@ -21,12 +21,12 @@ public class AdminInfo {
 		adminDto.setApw(apw); 
 		boolean result = AdminInfoController.getInstance().checkPw(adminDto);
 		if(result) {
-			System.out.println("새로운 비밀번호"); String newApw = scan.next();
-			System.out.println("새로운 이름"); String newAname = scan.next();
+			System.out.println("새로운 비밀번호 : "); String newApw = scan.next();
+			System.out.println("새로운 이름 : "); String newAname = scan.next();
 			adminDto.setApw(newApw); adminDto.setAname(newAname);
 			boolean result1 = AdminInfoController.getInstance().adminUpdate(adminDto);
 			if(result1) {
-				System.out.println("관리자 정보 수정완료");
+				System.out.println("[ 관리자 정보 수정성공 ]");
 			}
 		}
 		else {System.out.println("비밀번호가 일치하지 않습니다.");}
@@ -52,6 +52,6 @@ public class AdminInfo {
 	//admin 정보 로그아웃
 	public void adminLogout() {
 		AdminInfoController.getInstance().adminLogout();
-		System.out.println("로그아웃 되었습니다.");
+		System.out.println("[ 로그아웃 성공 ]");
 	}
 }

@@ -40,16 +40,17 @@ public class AdminView {
 		adminDto.setApw(apw); 
 		boolean result = AdminController.getInstance().adminLogin(adminDto);
 		if(result) {
-			System.out.println("관리자 로그인 성공");
+			System.out.println("[ 관리자 로그인 성공 ]");
 			AdminView.getInstance().adminMainMenu();
 		}
-		else {System.out.println("관리자 로그인 실패");}
+		else {System.out.println("[ 관리자 로그인 실패 ]");}
 		
 	}
 	
 	public void adminMainMenu() {
 		Scanner scan = new Scanner(System.in);
 		while(true) {
+			System.out.println("-------------------------MENU-------------------------");
 			System.out.println("1. 영화정보 관리\r\n"
 					+ "2. 사용자 계정출력\r\n"
 					+ "3. 상영시간표 관리\r\n"
@@ -57,15 +58,6 @@ public class AdminView {
 					+ "5. 회원정보 수정\r\n"
 					+ "6. 회원정보 삭제\r\n"
 					+ "7. 로그아웃");
-//			System.out.println(" ㅡㅡㅡㅡMENUㅡㅡㅡㅡ");
-//			System.out.println("| 1. 영화정보 관리		|");
-//			System.out.println("| 2. 사용자 계정출력	|");
-//			System.out.println("| 3. 상영시간표 관리	|");
-//			System.out.println("| 4. 영화상영관 관리	|");
-//			System.out.println("| 5. 회원정보 수정		|");
-//			System.out.println("| 6. 회원정보 삭제		|");
-//			System.out.println("| 7. 로그아웃			|");
-//			System.out.println(" ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 			int adminChoose = scan.nextInt();
 			if (adminChoose == 1) {
 				AdminMovieInfoView.getInstance().MovieInfoView();
