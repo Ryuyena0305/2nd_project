@@ -136,11 +136,15 @@ public class MemberRsvDetailDao extends Dao {
 		//예매 취소
 		public boolean rsvCan(MemberRsvDetailDto memberRsvDetailDto) {
 			try{
+				String sql1 = "delete from resvSeat where resvId = ?";
+				PreparedStatement ps1 = conn.prepareStatement(sql1);
+				ps1.setInt(1, memberRsvDetailDto.getRsvNum());
+				int count1 = ps1.executeUpdate();
 				String sql = "delete from resv where resvId = ?";
-							PreparedStatement ps = conn.prepareStatement(sql);
+				PreparedStatement ps = conn.prepareStatement(sql);
 				ps.setInt(1, memberRsvDetailDto.getRsvNum());
 				int count = ps.executeUpdate();
-				if(count == 1) {return true;}
+				if(count == 1 || count1 == 1) {return true;}
 			}catch (Exception e) {
 				System.out.println(e);
 			}

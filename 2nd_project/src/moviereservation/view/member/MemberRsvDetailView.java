@@ -14,7 +14,9 @@ public class MemberRsvDetailView {
 	private MemberRsvDetailView() {}
 	public static MemberRsvDetailView getInstance() {return instance;}
 		public void MemberRsvDetail() {
-			System.out.println("1.예매하기 2.예매 확인 3.예매 취소");
+			while(true) {
+			System.out.println("-------------------------MENU-------------------------");
+			System.out.println("1.예매하기\n2.예매 확인\n3.예매 취소\n4.뒤로가기");
 			int rsvInfo = scan.nextInt();
 			if( rsvInfo == 1) {
 				System.out.println("예매하기");
@@ -25,6 +27,8 @@ public class MemberRsvDetailView {
 			}else if (rsvInfo == 3) {
 				System.out.println("예매 취소");
 				rsvCan();
+			}
+			else if(rsvInfo == 4) {break;}
 			}
 		} // f end
 	
