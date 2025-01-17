@@ -21,7 +21,7 @@ public class AdminPrintUserView {
 	Scanner scan = new Scanner(System.in);
 
 	public void printUser() {
-		System.out.println("관리자 비밀번호를 입력하세요 : ");
+		System.out.println("관리자 비밀번호 : ");
 		String apw = scan.next();
 		AdminDto adminDto = new AdminDto();
 		adminDto.setApw(apw);
