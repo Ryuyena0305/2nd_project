@@ -27,7 +27,7 @@ public class MemberRsvDetailController {
 		// [2] 예약 상세 
 		
 		
-		// 현재 시트 수 만큼 dao 호출 
+		// 현재 시트 수 만큼 dao 호출
 		for( int i = 0 ; i<=rsvSeatNums.length-1 ; i++ ) {
 			MemberRsvDetailDao.getInstance().movieRsvRes(resvId, rsvSeatNums[i] );
 		}

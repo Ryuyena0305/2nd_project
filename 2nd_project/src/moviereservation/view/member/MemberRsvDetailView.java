@@ -43,7 +43,7 @@ public class MemberRsvDetailView {
             System.out.println("영화 관람 인원 수 선택 : ");
             int rsvPerson = scan.nextInt();
             printTheater(rsvTime);
-            System.out.println("영화 좌석 선택  ");
+            System.out.println("영화 좌석 선택 : ");
             System.out.println("좌석을 하나씩 입력해 주세요.");
             
             int[] rsvSeatNums = new int[rsvPerson];
@@ -65,9 +65,9 @@ public class MemberRsvDetailView {
             MemberRsvDetailController.getInstance().movieRsvRes(memberRsvDetailDto, rsvSeatNums);
             
             if( result ) {
-            	System.out.println("예매 성공");
+            	System.out.println("[ 예매 성공 ]");
             }else {
-            	System.out.println("예매 실패");
+            	System.out.println("[ 예매 실패 ]");
             }
             
 		}
@@ -184,13 +184,13 @@ public class MemberRsvDetailView {
 		   
 		// 영화 예매 취소
 		   public void rsvCan() {
-			   System.out.println("취소할 예매 번호");
+			   System.out.println("취소할 예매 번호 : ");
 			   int rsvNum = scan.nextInt();
 			   MemberRsvDetailDto memberRsvDetailDto = new MemberRsvDetailDto();
 			   memberRsvDetailDto.setRsvNum(rsvNum);
 			   boolean result = MemberRsvDetailController.getInstance().rsvCan(memberRsvDetailDto);
-			   if(result) {System.out.println("취소 성공");}
-			   else {System.out.println("취소 실패");}
+			   if(result) {System.out.println("[ 취소 성공 ]");}
+			   else {System.out.println("[ 취소 실패 ]");}
 			
 		}
 		
