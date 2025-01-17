@@ -14,7 +14,8 @@ public class AdminView {
 	private Scanner scan = new Scanner(System.in);
 	public void run() {
 		while(true) {
-			System.out.println("1. 회원가입 2. 로그인 3.뒤로가기");
+			System.out.println("-------------------------MENU-------------------------");
+			System.out.println("1. 회원가입\n2. 로그인\n3.뒤로가기");
 			int logChoose =scan.nextInt();
 			if(logChoose ==1) {adminSignup();}
 			else if(logChoose ==2) {adminLogin();}
