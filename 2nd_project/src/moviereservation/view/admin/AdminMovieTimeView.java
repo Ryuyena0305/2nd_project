@@ -15,17 +15,18 @@ public class AdminMovieTimeView {
 		public void MovieTimeView() {
 		System.out.println("상영시간표 관리");
 		while(true) {
-			System.out.println("1. 상영시간표 등록 2. 상영시간표 수정 3. 상영시간표 출력 4. 상영시간표 삭제 5. 뒤로가기");
+			System.out.println("-------------------------MENU-------------------------");
+			System.out.println(" 1. 상영시간표 등록 \n 2. 상영시간표 출력 \n 3. 상영시간표 수정 \n 4. 상영시간표 삭제 \n 5. 뒤로가기");
 			int movieTime = scan.nextInt();
 			if(movieTime == 1) {
 				System.out.println("상영시간표 등록");
 				movieTimeRes();
 			}else if(movieTime == 2) {
-				System.out.println("상영시간표 수정");
-				movieTimeUpdate();
-			}else if(movieTime == 3) {
 				System.out.println("상영시간표 출력");
 				movieTimeShow();
+			}else if(movieTime == 3) {
+				System.out.println("상영시간표 수정");
+				movieTimeUpdate();
 			}else if(movieTime == 4) {
 				System.out.println("상영시간표 삭제");
 				movieTimeDelete();
@@ -48,9 +49,9 @@ public class AdminMovieTimeView {
 			AdminMovieTimeDto adminMovieTimeDto = new AdminMovieTimeDto(startTime, finishTime, movieDate, theaterId, movieId);
 			boolean result = AdminMovieTimeDao.getInstance().movieTimeRes(adminMovieTimeDto);
 			if(result) {
-				System.out.println("등록 성공");
+				System.out.println("[ 등록 성공 ]");
 			}else {
-				System.out.println("등록 실패");
+				System.out.println("[ 등록 실패 ]");
 			}
 		}
 		public void movieTimeUpdate() {
@@ -70,9 +71,9 @@ public class AdminMovieTimeView {
 			AdminMovieTimeDto adminMovieTimeDto = new AdminMovieTimeDto(num, startTime, finishTime, movieDate, theaterId, movieId);
 			boolean result = AdminMovieTimeController.getInstance().updateByNum(adminMovieTimeDto);
 	        if (result) {
-	            System.out.println("수정 성공");
+	            System.out.println("[ 수정 성공 ]");
 	        } else {
-	            System.out.println("수정 실패");
+	            System.out.println("[ 수정 실패 ]");
 	        }
 		}
 		public void movieTimeShow() {
@@ -94,9 +95,9 @@ public class AdminMovieTimeView {
 	        int timepk = scan.nextInt();
 	        boolean result = AdminMovieTimeController.getInstance().deleteByNum(timepk);
 	        if (result) {
-	            System.out.println("삭제 성공");
+	            System.out.println("[ 삭제 성공 ]");
 	        } else {
-	            System.out.println("삭제 실패");
+	            System.out.println("[ 삭제 실패 ]");
 	        }
 		}
 		

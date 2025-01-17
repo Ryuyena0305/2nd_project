@@ -13,20 +13,21 @@ public class AdminMovieInfoView {
 	private AdminMovieInfoView() {}
 	public static AdminMovieInfoView getInstance() {return instance;}
 		public void MovieInfoView() {
-		System.out.println("영화정보 관리");
 		while(true) {
-			System.out.println("1.영화정보 등록 2. 영화정보 수정 3. 영화정보 출력 4. 영화정보 삭제 5.뒤로가기");
+			System.out.println("-------------------------MENU-------------------------");
+			System.out.println(" 1. 영화정보 등록 \n 2. 영화정보 출력 \n 3. 영화정보 수정 \n 4. 영화정보 삭제 \n 5. 뒤로가기");
 			int movieInfo = scan.nextInt();
 			if (movieInfo == 1) {
 				System.out.println("영화정보 등록");
 				movieInfoRes();
 			}else if(movieInfo == 2) {
-				System.out.println("영화정보 수정");
-				movieInfoUpdate();
-			}else if(movieInfo == 3) {
 				System.out.println("영화정보 출력");
 				movieInfoShow();
-			}else if(movieInfo == 4) {
+			}else if(movieInfo == 3) {
+				System.out.println("영화정보 수정");
+				movieInfoUpdate();
+			}
+			else if(movieInfo == 4) {
 				System.out.println("영화정보 삭제");
 				movieInfoDelete();
 			}else if(movieInfo == 5) {
@@ -46,9 +47,9 @@ public class AdminMovieInfoView {
 			AdminMovieInfoDto adminMovieInfoDto = new AdminMovieInfoDto(movieName, runTime, movieGrade, genreId);
 			boolean result = AdminMovieInfoDao.getInstance().movieInfoRes(adminMovieInfoDto);
 			if(result) {
-				System.out.println("등록 성공");
+				System.out.println("[ 등록 성공 ]");
 			}else {
-				System.out.println("등록 실패");
+				System.out.println("[ 등록 실패 ]");
 			}
 		}
 		public void movieInfoShow() {
@@ -85,9 +86,9 @@ public class AdminMovieInfoView {
 	        int movieId = scan.nextInt();
 	        boolean result = AdminMovieInfoController.getInstance().deleteByNum(movieId);
 	        if (result) {
-	            System.out.println("삭제 성공");
+	            System.out.println("[ 삭제 성공 ]");
 	        } else {
-	            System.out.println("삭제 실패");
+	            System.out.println("[ 삭제 실패 ]");
 	        }
 		}
 }
