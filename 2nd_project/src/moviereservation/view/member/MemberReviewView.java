@@ -27,8 +27,10 @@ public class MemberReviewView {
 	// 1. 리뷰 등록 화면
 	public void regist() {
 		System.out.println("영화명 : "); String movieName = scan.next();
-		System.out.println("리뷰 제목 : "); String reviewTitle = scan.next();
-		System.out.println("리뷰 내용 : "); String reviewContent = scan.next();
+		scan.nextLine();
+		System.out.println("리뷰 제목 : "); String reviewTitle = scan.nextLine();
+		
+		System.out.println("리뷰 내용 : "); String reviewContent = scan.nextLine();
 		System.out.println("리뷰 점수 : "); int reviewRating = scan.nextInt();
 		System.out.println("리뷰 작성 날짜 : "); String reviewDate = scan.next();
 		MemberReviewDto memberReviewDto = new MemberReviewDto();

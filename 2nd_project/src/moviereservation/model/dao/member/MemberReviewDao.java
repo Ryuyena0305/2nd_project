@@ -29,7 +29,7 @@ public class MemberReviewDao extends Dao{
 	}
 	// 1. 리뷰 등록 SQL 처리 메소드
 	public boolean regist(MemberReviewDto memberReviewDto) {
-		System.out.println(memberReviewDto);
+		
 		try {
 		String sql = "insert into movieReview(reviewTitle, reviewContent, reviewRating,reviewDate,memberId,movieId) values (?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
