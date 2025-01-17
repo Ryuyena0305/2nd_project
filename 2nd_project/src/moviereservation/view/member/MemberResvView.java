@@ -11,7 +11,8 @@ public class MemberResvView {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("====메뉴 선택====");
 		while(true) {
-			System.out.println("1.예매 2.리뷰 3.회원정보 수정 4.회원탈퇴 5.로그아웃");
+			System.out.println("-------------------------MENU-------------------------");
+			System.out.println("1.예매\n2.리뷰\n3.회원정보 수정\n4.회원탈퇴\n5.로그아웃");
 			int choose = scan.nextInt();
 			if (choose == 1) {MemberRsvDetailView.getInstance().MemberRsvDetail();}
 			else if(choose == 2) {MemberReviewView.getInstance().run();}
