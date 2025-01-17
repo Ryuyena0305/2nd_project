@@ -62,7 +62,7 @@ public class MemberView {
 			int choose2 = scan.nextInt();
 			if(choose2 == 1) {
 			MemberController.getInstance().delete();
-			logout();
+			run();
 			return 1;
 			}
 		}

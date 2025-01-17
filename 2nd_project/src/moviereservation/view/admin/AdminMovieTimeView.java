@@ -36,15 +36,15 @@ public class AdminMovieTimeView {
 		}
 	}
 		public void movieTimeRes() {
-			System.out.println("시작시간입력");
+			System.out.println("시작시간입력 : ");
 			String startTime = scan.next(); 
-			System.out.println("종료시간입력");
+			System.out.println("종료시간입력 : ");
 			String finishTime = scan.next(); 
-			System.out.println("영화날짜입력");
+			System.out.println("영화날짜입력 : ");
 			String movieDate = scan.next();
-			System.out.println("관 입력");
+			System.out.println("관 입력 : ");
 			int theaterId = scan.nextInt();
-			System.out.println("영화번호 입력");
+			System.out.println("영화번호 입력 : ");
 			int movieId = scan.nextInt();
 			AdminMovieTimeDto adminMovieTimeDto = new AdminMovieTimeDto(startTime, finishTime, movieDate, theaterId, movieId);
 			boolean result = AdminMovieTimeDao.getInstance().movieTimeRes(adminMovieTimeDto);

@@ -15,7 +15,7 @@ public class AdminMovieInfoView {
 		public void MovieInfoView() {
 		while(true) {
 			System.out.println("-------------------------MENU-------------------------");
-			System.out.println(" 1. 영화정보 등록 \n 2. 영화정보 출력 \n 3. 영화정보 수정 \n 4. 영화정보 삭제 \n 5. 뒤로가기");
+			System.out.println("1. 영화정보 등록 \n2. 영화정보 출력 \n3. 영화정보 수정 \n4. 영화정보 삭제 \n5. 뒤로가기");
 			int movieInfo = scan.nextInt();
 			if (movieInfo == 1) {
 				System.out.println("영화정보 등록");
